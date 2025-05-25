@@ -256,7 +256,7 @@ nav {
 }
 
 /* Modal background */
-.login-modal {
+.register-modal {
   display: none;
   position: fixed;
   z-index: 2000;
@@ -271,7 +271,7 @@ nav {
 }
 
 /* Modal content */
-.login-content {
+.register-content {
   background-color: white;
   padding: 30px;
   width: 90%;
@@ -328,4 +328,6 @@ label {
   margin-top: 15px;
   cursor: pointer;
 }
+
+
 
