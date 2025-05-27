@@ -105,9 +105,9 @@
     
     <section class="preview" id="preview">
         <div class="fade-slider">
-            <img src="img/1.png" class="fade-image active"/>
             <img src="img/2.png" class="fade-image active"/>
             <img src="img/3.png" class="fade-image active"/>
+            <img src="img/1.png" class="fade-image active"/>
             <div class="slide-text">
                 <h1>THRIFTERS</h1>
                 <p>Look BAD. In a COOL way.</p>
@@ -116,25 +116,49 @@
         </div>
     </section>
 
-    <h1>waaaaaaa</h1>
-    <p>gafae</p>
-
     <div class="register-modal" id="registerModal">
         <div class="register-content">
             <span class="close-btn" id="closeRegister">&times;</span>
-            <h2>Your Adiclub Benefits Await</h2>
-            <p>Get free shipping, vouchers and members-only products when you're in adiclub.</p>
-            <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-            <button class="social-btn google"><i class="fab fa-google"></i> Google</button>
+            <h2>Be a Thrifter!</h2>
+            <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
     
-            <input type="email" id="email" placeholder="Email address *" required>
-            <label><input type="checkbox" id="age" required> Yes, I am 18+ years old.</label>
-            <label><input type="checkbox" id="terms" required> I acknowledge the Terms and Privacy Policy.</label>
+            <input type="email" id="email" placeholder="Email address*" required>
+            <label><input type="checkbox" id="age" required> Yes, I am 18+ years old.<span>*</span></label>
+            <label><input type="checkbox" id="terms" required> I acknowledge that I have read and understood the Thrifters Terms and Conditions, Website Terms and Conditions and bad thrifts Privacy Policy 
+                (as may be updated from time to time), and hereby agree to be bound by such terms.<span>*</span></label>
+            <label><input type="checkbox" id="news"> I agree to receive news, promotions, information regarding bad thrifts’ brand, products, 
+                activities and events, and any other marketing communications and materials by e-mail</label>
     
             <button class="submit-btn" id="continue-btn">Continue →</button>
-            <div class="login">
-                <p>Have an account already? <a href="">Login Here!</a></p>
-            </div>
+            <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
+
+        </div>
+    </div>
+
+    <div class="register-pass-modal" id="registerPassModal">
+        <div class="register-pass-content">
+            <span class="close-btn" id="closeRegisterPass">&times;</span>
+            <h1>bad thrifts.</h1>
+            <h2>Welcome Thrifter!</h2>
+            <p>To proceed, type a password.</p>
+            <input type="password" id="password" placeholder="Password*" required>
+            <p class="pass-rule">Minimum of 8 characters.</p>
+            <button class="create-pass" id="createPass">Create Password →</button>
+        </div>
+    </div>
+
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h3>bad thrifts.</h1>
+            <h2>Welcome back Thrifter!</h2>
+            <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
+            <p class="sign-inP">Sign in</p>
+
+            <input type="email" id="email" placeholder="Email address*" required>
+            <input type="password" id="password" placeholder="Password*" required>
+
+            <button class="login-btn" id="loginBtn">Login →</button>
         </div>
     </div>
 

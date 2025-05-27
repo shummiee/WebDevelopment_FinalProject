@@ -8,8 +8,8 @@ images[current].classList.remove('active');
 }, 1000);
 
 document.addEventListener("DOMContentLoaded", function () {
-    const loginModal = document.getElementById("registerModal");
-    const closeBtn = document.getElementById("closeLogin");
+    const registerModal = document.getElementById("registerModal");
+    const closeBtn = document.getElementById("closeRegister");
     const userIcon = document.querySelector('a[aria-label="User"]');
 
     userIcon.addEventListener("click", function (e) {
@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (email === "" || !ageCheckbox || !termsCheckbox) {
             alert("Please fill in all required fields before submitting.");
         } else {
-            alert("Thank you for joining Adiclub!");
+            registerModal.style.display = 'none';
+            registerPassModal.style.display = "flex";
             registerModal.style.display = 'none';
       // Optionally clear the form or close modal
         }
@@ -74,6 +75,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const registerModal = document.getElementById('registerModal');
+    const loginModal = document.getElementById('loginModal');
+    const closeLogin = document.getElementById('closeLogin');
+    const showLoginLink = document.getElementById('showLogin');
+
+    // Show login form when "Login Here!" is clicked
+    showLoginLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        registerModal.style.display = 'none';
+        loginModal.style.display = 'flex';
+    });
+
+    // Close login modal
+    closeLogin.addEventListener('click', function () {
+        loginModal.style.display = 'none';
+    });
+
+    // Optional: Close modal when clicking outside the content
+    window.addEventListener('click', function (e) {
+        if (e.target === loginModal) {
+            loginModal.style.display = 'none';
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const closeRegisterPass = document.getElementById("closeRegisterPass");
+    const registerPassModal = document.getElementById("registerPassModal");
+
+    closeRegisterPass.addEventListener("click", function () {
+        registerPassModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (e.target === registerPassModal) {
+            registerPassModal.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const createPassBtn = document.getElementById("createPass");
+    const registerPassModal = document.getElementById("registerPassModal");
+    const passwordField = document.getElementById("password");
+
+    createPassBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const password = passwordField.value.trim();
+
+        // Validation
+        if (password === "") {
+            alert("Please enter a password.");
+        } else if (password.length < 8) {
+            alert("Password must be at least 8 characters long.");
+        } else {
+            // ✅ Successful registration
+            alert("Account successfully created!");
+
+            // Optionally clear and close
+            passwordField.value = "";
+            registerPassModal.style.display = "none";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.getElementById("loginBtn");
+    const loginModal = document.getElementById("loginModal");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    loginBtn.addEventListener("click", function () {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (email === "" || password === "") {
+            alert("Please fill in all required fields.");
+        } else {
+            alert("Login successful!");
+            // Close the modal
+            loginModal.style.display = 'none';
+            // Clear the form
+            emailInput.value = '';
+            passwordInput.value = '';
+        }
+    });
+});
 
 
 
