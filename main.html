@@ -23,23 +23,18 @@
                         <div class="column">
                             <h4>Clothing</h4>
                             <a href="#">New Arrivals</a>
-                            <a href="#">T-Shirts & polos</a>
-                            <a href="#">Jerseys</a>
-                            <a href="#">Hoodies</a>
-                            <a href="#">Tracksuits</a>
+                            <a href="#">T-Shirts & Polos</a>
                             <a href="#">Pants</a>
-                            <a href="#">Jackets</a>
                             <a href="#">Shorts</a>
+                            <a href="#">Hoodies</a>
+                            <a href="#">Jackets</a>
                         </div>
                         <div class="column">
                             <h4>Accessories</h4>
                             <a href="#">New Arrivals</a>
-                            <a href="#">All Bags</a>
+                            <a href="#">Bags</a>
                             <a href="#">Socks</a>
-                            <a href="#">Caps & Headwear</a>
-                            <a href="#">Gloves</a>
-                            <a href="#">Balls</a>
-                            <a href="#">Shinguards & Straps</a>
+                            <a href="#">Caps</a>
                         </div>
                     </div>
                 </li>
@@ -52,19 +47,16 @@
                             <h4>Clothing</h4>
                             <a href="#">New Arrivals</a>
                             <a href="#">Tops</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Leggings</a>
-                            <a href="#">Tracksuits</a>
+                            <a href="#">Pants</a>
                             <a href="#">Skirts</a>
                             <a href="#">Jackets</a>
+                            <a href="#">Hoodies</a>
                         </div>
                         <div class="column">
                             <h4>Accessories</h4>
                             <a href="#">Bags</a>
                             <a href="#">Headwear</a>
-                            <a href="#">Jewelry</a>
-                            <a href="#">Scarves</a>
-                            <a href="#">Belts</a>
+                            <a href="#">Socks</a>
                         </div>
                     </div>
                 </li>
@@ -77,15 +69,15 @@
                             <h4>Boys</h4>
                             <a href="#">Shirts</a>
                             <a href="#">Shorts</a>
-                            <a href="#">Tracksuits</a>
+                            <a href="#">Pants</a>
                             <a href="#">Jackets</a>
                         </div>
                         <div class="column">
                             <h4>Girls</h4>
                             <a href="#">Tops</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Leggings</a>
-                            <a href="#">Accessories</a>
+                            <a href="#">Shorts</a>
+                            <a href="#">Pants</a>
+                            <a href="#">Jackets</a>
                         </div>
                     </div>
                 </li>
@@ -140,10 +132,23 @@
             <span class="close-btn" id="closeRegisterPass">&times;</span>
             <h1>bad thrifts.</h1>
             <h2>Welcome Thrifter!</h2>
-            <p>To proceed, type a password.</p>
-            <input type="password" id="password" placeholder="Password*" required>
+            <p>To proceed, kindly fill up the form.</p>
+            <label for="first-name">First Name<span>*</span></label>
+            <input type="text" id="first-name" placeholder="First Name" required>
+            <label for="last-name">Last Name<span>*</span></label>
+            <input type="text" id="last-name" placeholder="Last Name" required>
+            <label for="birth-date">Birthday<span>*</span></label>
+            <input type="date" id="birth-date" name="Birth Date" required>
+            <label for="password">Password<span>*</span></label>
+            <input type="password" id="password" placeholder="Password" required>
             <p class="pass-rule">Minimum of 8 characters.</p>
-            <button class="create-pass" id="createPass">Create Password →</button>
+            <label for="cPassword">Confirm Password<span>*</span></label>
+            <input type="password" id="cPassword" placeholder="Confirm Password" required>
+            <div class="show-password-wrapper">
+                <input type="checkbox" id="see-pass">
+                <label for="see-pass">Show Password</label>
+            </div>
+            <button class="create-pass" id="createPass">Create Account →</button>
         </div>
     </div>
 
@@ -161,6 +166,12 @@
             <button class="login-btn" id="loginBtn">Login →</button>
         </div>
     </div>
+
+    <section class="preview-products" id="previewProducts">
+        <div class="">
+            
+        </div>
+    </section>
 
 </body>
 <script src="js/main_js.js" defer></script>

@@ -30,9 +30,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", () => {
     const joinBtn = document.getElementById("continue-btn");
+    const registerModal = document.getElementById("registerModal");
+    const registerPassModal = document.getElementById("registerPassModal");
+    const closeRegister = document.getElementById('closeRegister');
+    const userIcon = document.querySelector('.fa-user');
+    const emailInput = registerModal.querySelector('input[type="email"]');
+    const checkboxes = registerModal.querySelectorAll('input[type="checkbox"]');
 
+    // Show modal and clear fields when user icon is clicked
+    userIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        registerModal.style.display = 'flex';
+        clearFormFields();
+    });
+
+    // Close register modal
+    closeRegister.addEventListener('click', function () {
+        registerModal.style.display = 'none';
+    });
+
+    // Register submit
     joinBtn.addEventListener("click", function () {
-        const email = document.getElementById("email").value.trim();
+        const email = emailInput.value.trim();
         const ageCheckbox = document.getElementById("age").checked;
         const termsCheckbox = document.getElementById("terms").checked;
 
@@ -41,34 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             registerModal.style.display = 'none';
             registerPassModal.style.display = "flex";
-            registerModal.style.display = 'none';
-      // Optionally clear the form or close modal
+            clearFormFields(); // ✅ Clear after successful submission
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    const userIcon = document.querySelector('.fa-user');
-    const registerModal = document.getElementById('registerModal');
-    const closeRegister = document.getElementById('closeRegister');
-    const submitBtn = document.querySelector('.continue-btn');
-    const emailInput = document.querySelector('input[type="email"]');
-    const checkboxes = document.querySelectorAll('.login-content input[type="checkbox"]');
-
-    // Show modal and clear fields
-    userIcon.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default anchor behavior
-        registerModal.style.display = 'flex';
-        clearFormFields();
-    });
-
-    // Close modal
-    closeRegister.addEventListener('click', function () {
-        registerModal.style.display = 'none';
-    });
-
-    // Validate and show alert on submission
-
+    // ✅ Clear all inputs inside the register modal
     function clearFormFields() {
         emailInput.value = '';
         checkboxes.forEach(cb => cb.checked = false);
@@ -118,30 +114,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const createPassBtn = document.getElementById("createPass");
-    const registerPassModal = document.getElementById("registerPassModal");
-    const passwordField = document.getElementById("password");
+    const firstName = document.getElementById("first-name");
+    const lastName = document.getElementById("last-name");
+    const birthDate = document.getElementById("birth-date");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("cPassword");
+    const showPassCheckbox = document.getElementById("see-pass");
+
+    // Modals
+    const registerModal = document.getElementById("registerPassModal");
+    const loginModal = document.getElementById("loginModal");
+
+    // Show/hide password checkbox
+    showPassCheckbox.addEventListener("change", function () {
+        const type = this.checked ? "text" : "password";
+        password.type = type;
+        confirmPassword.type = type;
+    });
 
     createPassBtn.addEventListener("click", function (e) {
         e.preventDefault();
 
-        const password = passwordField.value.trim();
+        const firstVal = firstName.value.trim();
+        const lastVal = lastName.value.trim();
+        const birthVal = birthDate.value;
+        const passVal = password.value;
+        const confirmVal = confirmPassword.value;
 
-        // Validation
-        if (password === "") {
-            alert("Please enter a password.");
-        } else if (password.length < 8) {
-            alert("Password must be at least 8 characters long.");
-        } else {
-            // ✅ Successful registration
-            alert("Account successfully created!");
-
-            // Optionally clear and close
-            passwordField.value = "";
-            registerPassModal.style.display = "none";
+        // Required fields
+        if (!firstVal || !lastVal || !birthVal || !passVal || !confirmVal) {
+            alert("Please fill in all required fields.");
+            return;
         }
+
+        // Capitalization check
+        if (firstVal[0] !== firstVal[0].toUpperCase()) {
+            alert("First Name must start with a capital letter.");
+            return;
+        }
+
+        if (lastVal[0] !== lastVal[0].toUpperCase()) {
+            alert("Last Name must start with a capital letter.");
+            return;
+        }
+
+        // Password length
+        if (passVal.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return;
+        }
+
+        // Password match
+        if (passVal !== confirmVal) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        // ✅ Successful creation
+        alert("Account successfully created!");
+
+        // Hide registration modal
+        if (registerModal) registerModal.style.display = "none";
+
+        // Clear input fields
+        firstName.value = "";
+        lastName.value = "";
+        birthDate.value = "";
+        password.value = "";
+        confirmPassword.value = "";
+        showPassCheckbox.checked = false;
+        password.type = "password";
+        confirmPassword.type = "password";
+
+        // Show login modal
+        if (loginModal) loginModal.style.display = "block";
     });
 });
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginBtn = document.getElementById("loginBtn");
@@ -165,7 +213,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
-
-
