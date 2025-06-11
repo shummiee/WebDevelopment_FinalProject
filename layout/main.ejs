@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bad Thrifts</title>
-    <link rel="stylesheet" href="css/style_main.css">
+    <title><%= title || 'Bad Thrifts' %></title>
+    <link rel="stylesheet" href="/css/style_main.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
@@ -16,90 +16,80 @@
             </div>
 
             <ul class="main-nav">
-            <!-- Men -->
-                <li class="has-submenu">
-                    <a href="#">Men</a>
-                    <div class="submenu">
-                        <div class="column">
-                            <h4>Clothing</h4>
-                            <a href="#">New Arrivals</a>
-                            <a href="#">T-Shirts & Polos</a>
-                            <a href="#">Pants</a>
-                            <a href="#">Shorts</a>
-                            <a href="#">Hoodies</a>
-                            <a href="#">Jackets</a>
+                <% const menus = ['Men', 'Women', 'Kids']; %>
+                <% menus.forEach(menu => { %>
+                    <li class="has-submenu">
+                        <a href="#"><%=menu %></a>
+                        <div class="submenu">
+                            <% if (menu === 'Men' || menu === 'Women') { %>
+                                <div class="column">
+                                    <h4>Clothing</h4>
+                                    <a href="#">New Arrivals</a>
+                                    <% if (menu === 'Men') { %>
+                                        <a href="#">T-Shirts & Polos</a>
+                                        <a href="#">Pants</a>
+                                        <a href="#">Shorts</a>
+                                        <a href="#">Hoodies</a>
+                                        <a href="#">Jackets</a>
+                                    <% } else { %>
+                                        <a href="#">Tops</a>
+                                        <a href="#">Pants</a>
+                                        <a href="#">Skirts</a>
+                                        <a href="#">Jackets</a>
+                                        <a href="#">Hoodies</a>
+                                    <% } %>
+                                </div>
+                                <div class="column">
+                                    <h4>Accessories</h4>
+                                    <% if (menu === 'Men') { %>
+                                        <a href="#">New Arrivals</a>
+                                        <a href="#">Bags</a>
+                                        <a href="#">Socks</a>
+                                        <a href="#">Caps</a>
+                                    <% } else { %>
+                                        <a href="#">Bags</a>
+                                        <a href="#">Headwear</a>
+                                        <a href="#">Socks</a>
+                                    <% } %>
+                                </div>
+                            <% } else if (menu === 'Kids') { %>
+                                <div class="column">
+                                    <h4>Boys</h4>
+                                    <a href="#">Shirts</a>
+                                    <a href="#">Shorts</a>
+                                    <a href="#">Pants</a>
+                                    <a href="#">Jackets</a>
+                                </div>
+                                <div class="column">
+                                    <h4>Girls</h4>
+                                    <a href="#">Tops</a>
+                                    <a href="#">Shorts</a>
+                                    <a href="#">Pants</a>
+                                    <a href="#">Jackets</a>
+                                </div>
+                            <% } %>
                         </div>
-                        <div class="column">
-                            <h4>Accessories</h4>
-                            <a href="#">New Arrivals</a>
-                            <a href="#">Bags</a>
-                            <a href="#">Socks</a>
-                            <a href="#">Caps</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Women -->
-                <li class="has-submenu">
-                    <a href="#">Women</a>
-                    <div class="submenu">
-                        <div class="column">
-                            <h4>Clothing</h4>
-                            <a href="#">New Arrivals</a>
-                            <a href="#">Tops</a>
-                            <a href="#">Pants</a>
-                            <a href="#">Skirts</a>
-                            <a href="#">Jackets</a>
-                            <a href="#">Hoodies</a>
-                        </div>
-                        <div class="column">
-                            <h4>Accessories</h4>
-                            <a href="#">Bags</a>
-                            <a href="#">Headwear</a>
-                            <a href="#">Socks</a>
-                        </div>
-                    </div>
-                </li>
-
-        <!-- Kids -->
-                <li class="has-submenu">
-                    <a href="#">Kids</a>
-                    <div class="submenu">
-                        <div class="column">
-                            <h4>Boys</h4>
-                            <a href="#">Shirts</a>
-                            <a href="#">Shorts</a>
-                            <a href="#">Pants</a>
-                            <a href="#">Jackets</a>
-                        </div>
-                        <div class="column">
-                            <h4>Girls</h4>
-                            <a href="#">Tops</a>
-                            <a href="#">Shorts</a>
-                            <a href="#">Pants</a>
-                            <a href="#">Jackets</a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                <% }); %>
             </ul>
-
             <div class="right-align">
                 <div class="search-box">
-                    <input type="text" placeholder="Search" />
+                    <input type="text" placeholder="Search"/>
                     <button><i class="fas fa-search"></i></button>
                 </div>
-                <a href="" aria-label="User"><i class="fas fa-user"></i></a>
+                <a href="#" aria-label="User"><i class="fas fa-user"></i></a>
                 <a href="#" aria-label="Liked"><i class="fas fa-heart"></i></a>
                 <a href="#" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
             </div>
         </nav>
     </header>
-    
+
     <section class="preview" id="preview">
         <div class="fade-slider">
-            <img src="img/2.png" class="fade-image active"/>
-            <img src="img/3.png" class="fade-image active"/>
-            <img src="img/1.png" class="fade-image active"/>
+            <% const sliderImages = ['img/2.png', 'img/3.png', 'img/1.png']; %>
+            <% sliderImages.forEach(img => { %>
+                <img src="<%= img %>" class="fade-image active"/>
+            <% }); %>
             <div class="slide-text">
                 <h1>THRIFTERS</h1>
                 <p>Look BAD. In a COOL way.</p>
@@ -113,17 +103,14 @@
             <span class="close-btn" id="closeRegister">&times;</span>
             <h2>Be a Thrifter!</h2>
             <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
-    
+
             <input type="email" id="email" placeholder="Email address*" required>
             <label><input type="checkbox" id="age" required> Yes, I am 18+ years old.<span>*</span></label>
-            <label><input type="checkbox" id="terms" required> I acknowledge that I have read and understood the Thrifters Terms and Conditions, Website Terms and Conditions and bad thrifts Privacy Policy 
-                (as may be updated from time to time), and hereby agree to be bound by such terms.<span>*</span></label>
-            <label><input type="checkbox" id="news"> I agree to receive news, promotions, information regarding bad thrifts’ brand, products, 
-                activities and events, and any other marketing communications and materials by e-mail</label>
-    
+            <label><input type="checkbox" id="terms" required> I acknowledge the terms and privacy policy<span>*</span></label>
+            <label><input type="checkbox" id="news"> I agree to receive updates by e-mail</label>
+
             <button class="submit-btn" id="continue-btn">Continue →</button>
             <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
-
         </div>
     </div>
 
@@ -155,7 +142,7 @@
     <div class="login-modal" id="loginModal">
         <div class="login-content">
             <span class="close-btn" id="closeLogin">&times;</span>
-            <h3>bad thrifts.</h1>
+            <h3>bad thrifts.</h3>
             <h2>Welcome back Thrifter!</h2>
             <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
             <p class="sign-inP">Sign in</p>
@@ -170,17 +157,18 @@
     <section class="preview-products" id="previewProducts">
         <div class="cat-products" id="catProducts">
             <ul class="prev-products" id="prevProducts">
-                <a href="New-Arrivals">New Arrivals</a>
-                <a href="wiw">Wiw</a>
-                <a href="wow">Wow</a>
+                <% const productLinks = ['New-Arrivals', 'wiw', 'wow']; %>
+                <% productLinks.forEach(link => { %>
+                    <a href="<%= link %>"><%= link.replace('-', ' ') %></a>
+                <% }); %>
             </ul>
         </div>
 
         <div id="New-Arrivals">
-            
+            <!-- Add dynamic product rendering here -->
         </div>
     </section>
 
+    <script src="/js/main_js.js" defer></script>
 </body>
-<script src="js/main_js.js" defer></script>
 </html>
