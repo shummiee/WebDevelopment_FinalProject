@@ -168,18 +168,39 @@
     </div>
 
     <section class="preview-products" id="previewProducts">
-        <div class="cat-products" id="catProducts">
-            <ul class="prev-products" id="prevProducts">
-                <a href="New-Arrivals">New Arrivals</a>
-                <a href="wiw">Wiw</a>
-                <a href="wow">Wow</a>
-            </ul>
-        </div>
+        <nav class="product-cats">
+            <a href="#" class="cat active">T-shirts</a>
+            <a href="#" class="cat">Pants</a>
+            <a href="#" class="cat">Shoes</a>
+        </nav>
 
-        <div id="New-Arrivals">
-            
+
+        <div class="products-grid">
+            <!-- Example product card -->
+            <div class="product-card low-stock">
+            <img src="img/product1.jpg">
+            <div class="product-info">
+                <span class="price">₱600</span>
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem Ipsum</p>
+                <span class="stock-label">Low in stock!</span>
+            </div>
+        </div>
+    <!-- Add more cards similarly -->
+        <div class="product-card sold-out">
+            <img src="img/product2.avif">
+            <div class="product-info">
+                <span class="price">₱780</span>
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem Ipsum</p>
+                <span class="stock-label">Sold Out!</span>
+            </div>
         </div>
     </section>
+
+    <footer>
+        <p>CMS Co. | Contact Us: cmsCO@gmail.com</p>
+    </footer>
 
 </body>
 <script src="js/main_js.js" defer></script>
