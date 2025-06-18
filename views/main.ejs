@@ -10,6 +10,8 @@
 </head>
 <body>
     <%- include('../partials/header') %>
+    <%- include('../auth/login') %>
+    <%- include('../auth/registration') %>
     <section class="preview" id="preview">
         <div class="fade-slider">
         <img src="/img/2.png" class="fade-image active" />
@@ -23,18 +25,6 @@
         </div>
     </section>
 
-    <div class="login-modal" id="loginModal">
-        <div class="login-content">
-            <span class="close-btn" id="closeLogin">&times;</span>
-            <h3>bad thrifts.</h3>
-            <h2>Welcome back Thrifter!</h2>
-            <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
-            <p class="sign-inP">Sign in</p>
-            <input type="email" id="email-login" placeholder="Email address*" required>
-            <input type="password" id="password-login" placeholder="Password*" required>
-            <button class="login-btn" id="loginBtn">Login →</button>
-        </div>
-    </div>
     <section class="preview-products" id="previewProducts">
         <nav class="product-cats">
         <a href="#" class="cat active">T-shirts</a>
@@ -56,7 +46,6 @@
             <% }) %>
         </div>
     </section>
-    <%- include('partials/modals') %>
     <%- include('../partials/footer') %>
     <script src="/js/main_js.js" defer></script>
 </body>
