@@ -163,6 +163,31 @@ nav {
   position: relative;
 }
 
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px); /* place dropdown just below icon */
+  right: 0;
+  width: 220px;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  text-align: center;
+  z-index: 300;
+}
+
+.cart-dropdown p {
+  font-size: 14px;
+}
+
+.cart-wrapper:hover .cart-dropdown {
+  display: block;
+}
 
 /*width: 1351px;
   height: 600px;*/

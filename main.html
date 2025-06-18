@@ -22,7 +22,7 @@
                     <div class="submenu">
                         <div class="column">
                             <h4>Clothing</h4>
-                            <a href="#">New Arrivals</a>
+                            <a href="products.html">New Arrivals</a>
                             <a href="#">T-Shirts & Polos</a>
                             <a href="#">Pants</a>
                             <a href="#">Shorts</a>
@@ -90,7 +90,12 @@
                 </div>
                 <a href="" aria-label="User"><i class="fas fa-user"></i></a>
                 <a href="#" aria-label="Liked"><i class="fas fa-heart"></i></a>
-                <a href="#" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
+                <div class="cart-wrapper">
+                    <a href="#" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
+                    <div class="cart-dropdown">
+                        <p><strong>YOUR CART IS EMPTY</strong></p>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -103,7 +108,8 @@
             <div class="slide-text">
                 <h1>THRIFTERS</h1>
                 <p>Look BAD. In a COOL way.</p>
-                <button>SHOP NOW →</button>
+                <button onclick="window.location.href='products.html';">SHOP NOW →</button>
+
             </div>
         </div>
     </section>

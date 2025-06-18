@@ -1,0 +1,65 @@
+<header>
+    <nav>
+        <div class="logo">
+            <a href="#main">Bad Thrifts.</a>
+        </div>
+
+        <ul class="main-nav">
+            <!-- Men -->
+            <li class="has-submenu">
+                <a href="#">Men</a>
+                <div class="submenu">
+                    <div class="column">
+                        <h4>Clothing</h4>
+                        <a href="">New Arrivals</a>
+                        <a href="">T-Shirts & Polos</a>
+                        <a href="">Pants</a>
+                        <a href="">Shorts</a>
+                        <a href="">Hoodies</a>
+                        <a href="">Jackets</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Women -->
+            <li class="has-submenu">
+                <a href="#">Women</a>
+                <div class="submenu">
+                    <div class="column">
+                        <h4>Clothing</h4>
+                        <a href="">New Arrivals</a>
+                        <a href="">Tops</a>
+                        <a href="">Pants</a>
+                        <a href="">Skirts</a>
+                        <a href="">Jackets</a>
+                        <a href="">Hoodies</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="right-align">
+            <form class="search-box" method="GET" action="/search">
+                <input type="text" name="q" placeholder="Search" />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <a href="" aria-label="User"><i class="fas fa-user"></i></a>
+            <a href="" aria-label="Liked"><i class="fas fa-heart"></i></a>
+            <div class="cart-wrapper">
+                <a href="" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
+                <div class="cart-dropdown">
+                    <% if (cart && cart.items && cart.items.length > 0) { %>
+                        <ul>
+                            <% cart.items.forEach(item => { %>
+                                <li><%= item.name %> - <%= item.quantity %></li>
+                            <% }) %>
+                        </ul>
+                        <a href="" class="btn">View Cart</a>
+                    <% } else { %>
+                        <p><strong>YOUR CART IS EMPTY</strong></p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
