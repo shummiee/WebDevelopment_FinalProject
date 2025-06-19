@@ -22,8 +22,7 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'views'));
 
-// Serve static files (css, js, images from /public folder)
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..')));
 
 // Routes
 //app.use('/api/products', productRoutes);   // Product API
@@ -35,11 +34,17 @@ app.get('/register', (req, res) => {
 });
 
 // Test route
+// Serve main.html as homepage
 app.get('/', (req, res) => {
-  res.send('🛍️ Hello from BadThrifts backend!');
+  res.sendFile(path.join(__dirname, '..', 'main.html'));
 });
 
+
 // Start the server
+const { exec } = require('child_process');
+
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  exec(`start http://localhost:${PORT}`); // Opens browser on Windows
 });
+
