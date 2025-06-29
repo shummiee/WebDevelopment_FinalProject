@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="/css/style_main.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/style_main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="register-modal" id="registerModal">
-        <div class="register-content">
-            <span class="close-btn" id="closeRegister">&times;</span>
-            <h2>Be a Thrifter!</h2>
-            <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
-            <input type="email" id="email-register" placeholder="Email address*" required>
-            <label><input type="checkbox" id="age" required> Yes, I am 18+ years old.<span>*</span></label>
-            <label><input type="checkbox" id="terms" required> I acknowledge the policies and terms.<span>*</span></label>
-            <label><input type="checkbox" id="news"> I agree to receive marketing emails.</label>
-            <button class="submit-btn" id="continue-btn">Continue →</button>
-            <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
-        </div>
-    </div>
 
-    <!-- Register Password Modal -->
-    <div class="register-pass-modal" id="registerPassModal">
-        <div class="register-pass-content">
-            <span class="close-btn" id="closeRegisterPass">&times;</span>
-            <h1>bad thrifts.</h1>
-            <h2>Welcome Thrifter!</h2>
-            <p>To proceed, kindly fill up the form.</p>
-            <label for="first-name">First Name<span>*</span></label>
-            <input type="text" id="first-name" placeholder="First Name" required>
-            <label for="last-name">Last Name<span>*</span></label>
-            <input type="text" id="last-name" placeholder="Last Name" required>
-            <label for="birth-date">Birthday<span>*</span></label>
-            <input type="date" id="birth-date" name="Birth Date" required>
-            <label for="password">Password<span>*</span></label>
-            <input type="password" id="password" placeholder="Password" required>
-            <p class="pass-rule">Minimum of 8 characters.</p>
-            <label for="cPassword">Confirm Password<span>*</span></label>
-            <input type="password" id="cPassword" placeholder="Confirm Password" required>
-            <div class="show-password-wrapper">
-                <input type="checkbox" id="see-pass">
-                <label for="see-pass">Show Password</label>
-            </div>
-            <button class="create-pass" id="createPass">Create Account →</button>
-        </div>
+  <!-- Step 1 -->
+  <div class="register-modal" id="registerModal">
+    <div class="register-content">
+      <span class="close-btn" id="closeRegister">&times;</span>
+      <h2>Be a Thrifter!</h2>
+      <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
+
+      <input type="email" id="email-register" placeholder="Email address*" required />
+      <label><input type="checkbox" id="age" required /> Yes, I am 18+ years old.<span>*</span></label>
+      <label><input type="checkbox" id="terms" required /> I acknowledge the policies and terms.<span>*</span></label>
+      <label><input type="checkbox" id="news" /> I agree to receive marketing emails.</label>
+
+      <button class="submit-btn" id="continue-btn">Continue →</button>
+      <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
     </div>
-    <script src="/js/main_js.js" defer></script>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="register-pass-modal" id="registerPassModal">
+    <div class="register-pass-content">
+      <span class="close-btn" id="closeRegisterPass">&times;</span>
+      <h1>bad thrifts.</h1>
+      <h2>Welcome Thrifter!</h2>
+      <p>To proceed, kindly fill up the form.</p>
+
+      <label for="first-name">First Name<span>*</span></label>
+      <input type="text" id="first-name" placeholder="First Name" required />
+
+      <label for="last-name">Last Name<span>*</span></label>
+      <input type="text" id="last-name" placeholder="Last Name" required />
+
+      <label for="birth-date">Birthday<span>*</span></label>
+      <input type="date" id="birth-date" name="birthDate" required />
+
+      <label for="password">Password<span>*</span></label>
+      <input type="password" id="password" placeholder="Password" required />
+      <p class="pass-rule">Minimum of 8 characters.</p>
+
+      <label for="cPassword">Confirm Password<span>*</span></label>
+      <input type="password" id="cPassword" placeholder="Confirm Password" required />
+
+      <div class="show-password-wrapper">
+        <input type="checkbox" id="see-pass" />
+        <label for="see-pass">Show Password</label>
+      </div>
+
+      <button class="create-pass" id="createPass">Create Account →</button>
+    </div>
+  </div>
+
+  <script src="/js/main_js.js" defer></script>
 </body>
 </html>

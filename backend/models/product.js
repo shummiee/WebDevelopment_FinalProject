@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Create schema based on your MongoDB Compass sample
 const ProductSchema = new mongoose.Schema({
   Name: String,
   Gender: String,
@@ -8,11 +7,10 @@ const ProductSchema = new mongoose.Schema({
   Clothing: String,
   Size: String,
   Brand: String,
-  Price: Int32,
-  Stock_Quantity: Int32,
+  Price: Number,
+  Stock_Quantity: Number,
 
   
 });
 
-// IMPORTANT: 3rd argument 'test' forces Mongoose to use the 'test' collection
 module.exports = mongoose.model('Product', ProductSchema, 'test');

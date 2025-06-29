@@ -1,216 +1,210 @@
+// ========== FADE IMAGE SLIDESHOW ==========
 const images = document.querySelectorAll('.fade-image');
 let current = 0;
 
 setInterval(() => {
-images[current].classList.remove('active');
-    current = (current + 1) % images.length;
-    images[current].classList.add('active');
+  images[current].classList.remove('active');
+  current = (current + 1) % images.length;
+  images[current].classList.add('active');
 }, 1000);
 
-document.addEventListener("DOMContentLoaded", function () {
-    const registerModal = document.getElementById("registerModal");
-    const closeBtn = document.getElementById("closeRegister");
-    const userIcon = document.querySelector('a[aria-label="User"]');
-
-    userIcon.addEventListener("click", function (e) {
-        e.preventDefault();
-        registerModal.style.display = "flex";
-    });
-
-    closeBtn.addEventListener("click", function () {
-        registerModal.style.display = "none";
-    });
-
-    window.addEventListener("click", function (e) {
-        if (e.target === registerModal) {
-            registerModal.style.display = "none";
-        }
-    });
-});
-
+// ========== MODAL: Register Step 1 ==========
 document.addEventListener("DOMContentLoaded", () => {
-    const joinBtn = document.getElementById("continue-btn");
-    const registerModal = document.getElementById("registerModal");
-    const registerPassModal = document.getElementById("registerPassModal");
-    const closeRegister = document.getElementById('closeRegister');
-    const userIcon = document.querySelector('.fa-user');
-    const emailInput = registerModal.querySelector('input[type="email"]');
-    const checkboxes = registerModal.querySelectorAll('input[type="checkbox"]');
+  const registerModal = document.getElementById("registerModal");
+  const closeBtn = document.getElementById("closeRegister");
+  const userIcon = document.querySelector('a[aria-label="User"]');
 
-    // Show modal and clear fields when user icon is clicked
-    userIcon.addEventListener('click', function (e) {
-        e.preventDefault();
-        registerModal.style.display = 'flex';
-        clearFormFields();
-    });
+  userIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerModal.style.display = "flex";
+  });
 
-    // Close register modal
-    closeRegister.addEventListener('click', function () {
-        registerModal.style.display = 'none';
-    });
+  closeBtn.addEventListener("click", () => {
+    registerModal.style.display = "none";
+  });
 
-    // Register submit
-    joinBtn.addEventListener("click", function () {
-        const email = emailInput.value.trim();
-        const ageCheckbox = document.getElementById("age").checked;
-        const termsCheckbox = document.getElementById("terms").checked;
-
-        if (email === "" || !ageCheckbox || !termsCheckbox) {
-            alert("Please fill in all required fields before submitting.");
-        } else {
-            registerModal.style.display = 'none';
-            registerPassModal.style.display = "flex";
-            clearFormFields(); // ✅ Clear after successful submission
-        }
-    });
-
-    // ✅ Clear all inputs inside the register modal
-    function clearFormFields() {
-        emailInput.value = '';
-        checkboxes.forEach(cb => cb.checked = false);
+  window.addEventListener("click", (e) => {
+    if (e.target === registerModal) {
+      registerModal.style.display = "none";
     }
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const registerModal = document.getElementById('registerModal');
-    const loginModal = document.getElementById('loginModal');
-    const closeLogin = document.getElementById('closeLogin');
-    const showLoginLink = document.getElementById('showLogin');
-
-    // Show login form when "Login Here!" is clicked
-    showLoginLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        registerModal.style.display = 'none';
-        loginModal.style.display = 'flex';
-    });
-
-    // Close login modal
-    closeLogin.addEventListener('click', function () {
-        loginModal.style.display = 'none';
-    });
-
-    // Optional: Close modal when clicking outside the content
-    window.addEventListener('click', function (e) {
-        if (e.target === loginModal) {
-            loginModal.style.display = 'none';
-        }
-    });
-});
-
+// ========== MODAL: Register Step 2 ==========
 document.addEventListener("DOMContentLoaded", () => {
-    const closeRegisterPass = document.getElementById("closeRegisterPass");
-    const registerPassModal = document.getElementById("registerPassModal");
+  const joinBtn = document.getElementById("continue-btn");
+  const registerModal = document.getElementById("registerModal");
+  const registerPassModal = document.getElementById("registerPassModal");
+  const emailInput = registerModal.querySelector('input[type="email"]');
 
-    closeRegisterPass.addEventListener("click", function () {
-        registerPassModal.style.display = "none";
-    });
+  joinBtn.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    const ageCheckbox = document.getElementById("age").checked;
+    const termsCheckbox = document.getElementById("terms").checked;
 
-    window.addEventListener("click", function (e) {
-        if (e.target === registerPassModal) {
-            registerPassModal.style.display = "none";
-        }
-    });
+    if (email === "" || !ageCheckbox || !termsCheckbox) {
+      alert("Please fill in all required fields before continuing.");
+    } else {
+      registerModal.style.display = "none";
+      registerPassModal.style.display = "flex";
+    }
+  });
 });
 
+// ========== MODAL: Register Password Step ==========
 document.addEventListener("DOMContentLoaded", () => {
-    const createPassBtn = document.getElementById("createPass");
-    const firstName = document.getElementById("first-name");
-    const lastName = document.getElementById("last-name");
-    const birthDate = document.getElementById("birth-date");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("cPassword");
+  const createPassBtn = document.getElementById("createPass");
+
+  createPassBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const firstName = document.getElementById("first-name").value.trim();
+    const lastName = document.getElementById("last-name").value.trim();
+    const birthDate = document.getElementById("birth-date").value;
+    const email = document.getElementById("email-register").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("cPassword").value;
     const showPassCheckbox = document.getElementById("see-pass");
 
-    // Modals
-    const registerModal = document.getElementById("registerPassModal");
-    const loginModal = document.getElementById("loginModal");
+    if (!firstName || !lastName || !birthDate || !email || !password || !confirmPassword) {
+      alert("Please fill in all required fields.");
+      return;
+    }
 
-    // Show/hide password checkbox
-    showPassCheckbox.addEventListener("change", function () {
-        const type = this.checked ? "text" : "password";
-        password.type = type;
-        confirmPassword.type = type;
+    if (firstName[0] !== firstName[0].toUpperCase()) {
+      alert("First Name must start with a capital letter.");
+      return;
+    }
+
+    if (lastName[0] !== lastName[0].toUpperCase()) {
+      alert("Last Name must start with a capital letter.");
+      return;
+    }
+
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    // ✅ SEND TO BACKEND
+    fetch("http://localhost:3000/api/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        birthDate,
+        email,
+        password,
+        confirmPassword,
+      }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.message || "Registration failed");
+        }
+        alert(data.message || "Registration successful!");
+        document.getElementById("registerPassModal").style.display = "none";
+        document.getElementById("loginModal").style.display = "flex";
+      })
+      .catch((err) => {
+      console.error("🔥 FETCH ERROR:", err);
+      alert(err.message || "Failed to fetch – check if server is reachable.");
     });
 
-    createPassBtn.addEventListener("click", function (e) {
-        e.preventDefault();
 
-        const firstVal = firstName.value.trim();
-        const lastVal = lastName.value.trim();
-        const birthVal = birthDate.value;
-        const passVal = password.value;
-        const confirmVal = confirmPassword.value;
-
-        // Required fields
-        if (!firstVal || !lastVal || !birthVal || !passVal || !confirmVal) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-
-        // Capitalization check
-        if (firstVal[0] !== firstVal[0].toUpperCase()) {
-            alert("First Name must start with a capital letter.");
-            return;
-        }
-
-        if (lastVal[0] !== lastVal[0].toUpperCase()) {
-            alert("Last Name must start with a capital letter.");
-            return;
-        }
-
-        // Password length
-        if (passVal.length < 8) {
-            alert("Password must be at least 8 characters long.");
-            return;
-        }
-
-        // Password match
-        if (passVal !== confirmVal) {
-            alert("Passwords do not match.");
-            return;
-        }
-
-        // ✅ Successful creation
-        alert("Account successfully created!");
-
-        // Hide registration modal
-        if (registerModal) registerModal.style.display = "none";
-
-        // Clear input fields
-        firstName.value = "";
-        lastName.value = "";
-        birthDate.value = "";
-        password.value = "";
-        confirmPassword.value = "";
-        showPassCheckbox.checked = false;
-        password.type = "password";
-        confirmPassword.type = "password";
-
-        // Show login modal
-        if (loginModal) loginModal.style.display = "block";
-    });
+    // Clear form fields
+    document.getElementById("first-name").value = "";
+    document.getElementById("last-name").value = "";
+    document.getElementById("birth-date").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("cPassword").value = "";
+    showPassCheckbox.checked = false;
+  });
 });
 
+// ========== Show/Hide Password ==========
 document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.getElementById("loginBtn");
-    const loginModal = document.getElementById("loginModal");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
+  const showPassCheckbox = document.getElementById("see-pass");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("cPassword");
 
-    loginBtn.addEventListener("click", function () {
-        const email = emailInput.value.trim();
-        const password = passwordInput.value.trim();
-
-        if (email === "" || password === "") {
-            alert("Please fill in all required fields.");
-        } else {
-            alert("Login successful!");
-            // Close the modal
-            loginModal.style.display = 'none';
-            // Clear the form
-            emailInput.value = '';
-            passwordInput.value = '';
-        }
-    });
+  showPassCheckbox.addEventListener("change", function () {
+    const type = this.checked ? "text" : "password";
+    password.type = type;
+    confirmPassword.type = type;
+  });
 });
 
+// ========== MODAL: Login ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("loginBtn");
+  const loginModal = document.getElementById("loginModal");
+  const emailInput = document.getElementById("email-login");
+  const passwordInput = document.getElementById("password-login");
+
+  loginBtn.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (email === "" || password === "") {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    fetch("http://localhost:3000/api/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+        alert(data.message);
+        loginModal.style.display = "none";
+        emailInput.value = "";
+        passwordInput.value = "";
+      })
+      .catch((err) => {
+        alert(err.message || "Login failed.");
+      });
+  });
+});
+
+// ========== Login/Modal Toggling ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const registerModal = document.getElementById("registerModal");
+  const loginModal = document.getElementById("loginModal");
+  const registerPassModal = document.getElementById("registerPassModal");
+  const closeLogin = document.getElementById("closeLogin");
+  const closeRegisterPass = document.getElementById("closeRegisterPass");
+  const showLoginLink = document.getElementById("showLogin");
+
+  showLoginLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerModal.style.display = "none";
+    registerPassModal.style.display = "none";
+    loginModal.style.display = "flex";
+  });
+
+  closeLogin.addEventListener("click", () => {
+    loginModal.style.display = "none";
+  });
+
+  closeRegisterPass.addEventListener("click", () => {
+    registerPassModal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === loginModal) loginModal.style.display = "none";
+    if (e.target === registerPassModal) registerPassModal.style.display = "none";
+  });
+});
