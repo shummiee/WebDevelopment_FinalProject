@@ -756,6 +756,11 @@ footer p {
   margin-bottom: 20px;
 }
 
+.product-description {
+  font-size: 15px;
+  font-style: italic;
+}
+
 .shipping-info {
   display: flex;
   gap: 60px;
@@ -1219,4 +1224,191 @@ footer p {
   margin-top: -4px;
 }
 
+/*admin*/
 
+.add-product{
+  margin-top: 80px;
+  width: 10%;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin-left: 1150px;
+}
+
+.add-product:hover {
+  background-color: #333;
+}
+
+.add-product-btn {
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+}
+
+.add-product-btn:hover {
+  background-color: #333;
+}
+
+.admin-nav {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+.admin-nav > li {
+  position: relative;
+}
+
+.admin-nav > li > a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 0;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.admin-nav > li > a:hover {
+  color: #444;
+}
+
+.admin-nav .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  padding: 20px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: row;
+  gap: 60px;
+  z-index: 200;
+  min-width: 250px;
+  border-top: 2px solid black;
+}
+
+/* Show submenu on hover */
+.has-submenu:hover .submenu {
+  display: flex;
+}
+
+/* Column styling */
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.column a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.column a:hover {
+  text-decoration: underline;
+}
+
+.products-men h1 {
+  margin-left: 115px;
+  font-size: 60px;
+}
+
+.products-men h2 {
+  margin-left: 115px;
+  margin-top: 20px;
+  font-style: oblique;
+}
+
+.products-women h1 {
+  margin-left: 115px;
+  font-size: 60px;
+}
+
+.products-women h2 {
+  margin-left: 115px;
+  margin-top: 20px;
+  font-style: oblique;
+}
+
+.add-product-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.add-product-content {
+  background-color: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  max-height: 90vh; /* Keeps modal from overflowing screen */
+  overflow-y: auto; /* Scrolls only content inside modal */
+}
+
+.add-product-content h1 {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input styling */
+.add-product-content input[type="text"],
+.add-product-content input[type="number"],
+.add-product-content select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Label spacing */
+.add-product-content label {
+  text-align: left;
+  font-style: italic;
+}
