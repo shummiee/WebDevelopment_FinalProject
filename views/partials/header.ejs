@@ -1,7 +1,7 @@
 <header>
     <nav>
         <div class="logo">
-            <a href="#main">Bad Thrifts.</a>
+            <a href="/main">Bad Thrifts.</a>
         </div>
 
         <ul class="main-nav">
@@ -11,7 +11,7 @@
                 <div class="submenu">
                     <div class="column">
                         <h4>Clothing</h4>
-                        <a href="">New Arrivals</a>
+                        <a href="/products">New Arrivals</a>
                         <a href="">T-Shirts & Polos</a>
                         <a href="">Pants</a>
                         <a href="">Shorts</a>
@@ -45,16 +45,7 @@
             <div class="cart-wrapper">
                 <a href="" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
                 <div class="cart-dropdown">
-                    <% if (cart && cart.items && cart.items.length > 0) { %>
-                        <ul>
-                            <% cart.items.forEach(item => { %>
-                                <li><%= item.name %> - <%= item.quantity %></li>
-                            <% }) %>
-                        </ul>
-                        <a href="" class="btn">View Cart</a>
-                    <% } else { %>
                         <p><strong>YOUR CART IS EMPTY</strong></p>
-                    <% } %>
                 </div>
             </div>
         </div>

@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Bad Thrifts</title>
-    <link rel="stylesheet" href="/css/style_main.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="/js/main_js.js" defer></script>
+
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <%- include('../auth/login') %>
-    <%- include('../auth/registration') %>
+    <%- include('partials/header') %>
+    <%- include('auth/login') %>
+    <%- include('auth/registration') %>
     <section class="preview" id="preview">
         <div class="fade-slider">
         <img src="/img/2.png" class="fade-image active" />
@@ -20,7 +22,7 @@
         <div class="slide-text">
             <h1>THRIFTERS</h1>
             <p>Look BAD. In a COOL way.</p>
-            <button>SHOP NOW →</button>
+            <a href="/products" class="shop-btn">SHOP NOW →</a>
         </div>
         </div>
     </section>
@@ -33,20 +35,18 @@
         </nav>
 
         <div class="products-grid">
-            <% products.forEach(product => { %>
-                <div class="product-card <%= product.stock === 'low' ? 'low-stock' : 'sold-out' %>">
-                <img src="/img/<%= product.image %>" />
-                <div class="product-info">
-                    <span class="price">₱<%= product.price %></span>
-                    <h3><%= product.title %></h3>
-                    <p><%= product.description %></p>
-                    <span class="stock-label"><%= product.stock === 'low' ? 'Low in stock!' : 'Sold Out!' %></span>
-                </div>
-                </div>
-            <% }) %>
+            <!-- Example product card -->
+            <div class="product-card low-stock">
+            <img src="img/product1.jpg">
+            <div class="product-info">
+                <span class="price">₱600</span>
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem Ipsum</p>
+                <span class="stock-label">Stock: 1</span>
+            </div>
         </div>
     </section>
-    <%- include('../partials/footer') %>
+    <%- include('partials/footer') %>
     <script src="/js/main_js.js" defer></script>
 </body>
 </html>

@@ -4,26 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bad Thrifts</title>
-  
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/style_main.css" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- CSS -->
+   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- JS -->
   <script src="/js/main_js.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== NAVBAR ========== -->
   <header>
     <nav>
       <div class="logo">
         <a href="#main">Bad Thrifts.</a>
       </div>
       <ul class="main-nav">
-        <!-- Men -->
         <li class="has-submenu">
           <a href="#">Men</a>
           <div class="submenu">
@@ -37,8 +34,6 @@
             </div>
           </div>
         </li>
-
-        <!-- Women -->
         <li class="has-submenu">
           <a href="#">Women</a>
           <div class="submenu">
@@ -70,6 +65,7 @@
     </nav>
   </header>
 
+  <!-- ========== SLIDESHOW ========== -->
   <section class="preview" id="preview">
     <div class="fade-slider">
       <img src="/img/2.png" class="fade-image active" />
@@ -83,70 +79,76 @@
     </div>
   </section>
 
+  <!-- ========== REGISTER MODAL STEP 1 ========== -->
   <div class="register-modal" id="registerModal">
     <div class="register-content">
       <span class="close-btn" id="closeRegister">&times;</span>
       <h2>Be a Thrifter!</h2>
       <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
+
       <input type="email" id="email-register" placeholder="Email address*" required />
       <label><input type="checkbox" id="age" required /> Yes, I am 18+ years old.<span>*</span></label>
       <label><input type="checkbox" id="terms" required />
-        I acknowledge that I have read and understood the Thrifters Terms and Conditions, Website Terms and Conditions and Bad Thrifts Privacy Policy (as may be updated from time to time), and hereby agree to be bound by such terms.<span>*</span>
+        I acknowledge that I have read and understood the Thrifters Terms and Conditions, Website Terms and Conditions and Bad Thrifts Privacy Policy.<span>*</span>
       </label>
-      <label><input type="checkbox" id="news" />
-        I agree to receive news, promotions, information regarding Bad Thrifts’ brand, products, activities and events, and any other marketing communications and materials by e-mail.
-      </label>
+      <label><input type="checkbox" id="news" /> I agree to receive promos and updates.</label>
+
       <button class="submit-btn" id="continue-btn">Continue →</button>
       <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
     </div>
   </div>
 
+  <!-- ========== REGISTER MODAL STEP 2 ========== -->
   <div class="register-pass-modal" id="registerPassModal">
-  <div class="register-pass-content">
-    <span class="close-btn" id="closeRegisterPass">&times;</span>
-    <h1>bad thrifts.</h1>
-    <h2>Welcome Thrifter!</h2>
-    <p>To proceed, kindly fill up the form.</p>
+    <div class="register-pass-content">
+      <span class="close-btn" id="closeRegisterPass">&times;</span>
+      <h1>bad thrifts.</h1>
+      <h2>Welcome Thrifter!</h2>
+      <p>To proceed, kindly fill up the form.</p>
 
-    <label for="first-name">First Name<span>*</span></label>
-    <input type="text" id="first-name" placeholder="First Name" required />
+      <label for="first-name">First Name<span>*</span></label>
+      <input type="text" id="first-name" placeholder="First Name" required />
 
-    <label for="last-name">Last Name<span>*</span></label>
-    <input type="text" id="last-name" placeholder="Last Name" required />
+      <label for="last-name">Last Name<span>*</span></label>
+      <input type="text" id="last-name" placeholder="Last Name" required />
 
-    <label for="birth-date">Birthday<span>*</span></label>
-    <input type="date" id="birth-date" name="birthDate" required />
+      <label for="birth-date">Birthday<span>*</span></label>
+      <input type="date" id="birth-date" name="birthDate" required />
 
-    <label for="password">Password<span>*</span></label>
-    <input type="password" id="password" placeholder="Password" required />
-    <p class="pass-rule">Minimum of 8 characters.</p>
+      <label for="password">Password<span>*</span></label>
+      <input type="password" id="password" placeholder="Password" required />
+      <p class="pass-rule">Minimum of 8 characters.</p>
 
-    <label for="cPassword">Confirm Password<span>*</span></label>
-    <input type="password" id="cPassword" placeholder="Confirm Password" required />
+      <label for="cPassword">Confirm Password<span>*</span></label>
+      <input type="password" id="cPassword" placeholder="Confirm Password" required />
 
-    <div class="show-password-wrapper">
-      <input type="checkbox" id="see-pass" />
-      <label for="see-pass">Show Password</label>
+      <div class="show-password-wrapper">
+        <input type="checkbox" id="see-pass" />
+        <label for="see-pass">Show Password</label>
+      </div>
+
+      <button class="create-pass" id="createPass">Create Account →</button>
     </div>
-
-    <button class="create-pass" id="createPass">Create Account →</button>
   </div>
-</div>
 
-
+  <!-- ========== LOGIN MODAL ========== -->
   <div class="login-modal" id="loginModal">
     <div class="login-content">
       <span class="close-btn" id="closeLogin">&times;</span>
       <h1>bad thrifts.</h1>
       <h2>Welcome back Thrifter!</h2>
-      <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
+      <p>Login to access your vouchers and perks!</p>
       <p class="sign-inP">Sign in</p>
+
       <input type="email" id="email-login" placeholder="Email address*" required />
       <input type="password" id="password-login" placeholder="Password*" required />
       <button class="login-btn" id="loginBtn">Login →</button>
+
+      <p class="showRegister">Don’t have an account? <a href="#" id="showRegister">Create Account!</a></p>
     </div>
   </div>
 
+  <!-- ========== PRODUCT PREVIEW GRID ========== -->
   <section class="preview-products" id="previewProducts">
     <nav class="product-cats">
       <a href="#" class="cat active">T-shirts</a>

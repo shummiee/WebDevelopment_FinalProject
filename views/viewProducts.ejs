@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bad Thrifts</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <%- include('auth/login') %>
+    <%- include('auth/registration') %>
+
+    <section class="product-detail-container">
+        <div class="product-images">
+            <img src="img/product1.jpg" alt="Main Product" class="main-image" id="mainProductImage"/>
+            <div class="thumbnails">
+                <img src="img/product2.avif" alt="Thumb 1" data-full="img/product2.avif" />
+                <img src="img/product1.jpg" alt="Thumb 2" data-full="img/product1.jpg" />
+                <img src="img/product2.avif" alt="Thumb 3" data-full="img/product2.avif" />
+            </div>
+
+            <p class="like-btn"><i class="far fa-heart"></i> Like Product</p>
+            </div>
+
+            <div class="product-details">
+            <h1>Billie Eilish Limited Shirt</h1>
+            <p class="price">₱650</p>
+            <p class="brand">Brand: <em>Uniqlo</em></p>
+            <p class="stock">Stock: <span class="in-stock">1</span></p>
+
+            <div class="shipping-info">
+                <div>
+                <p class="label">Shipping To</p>
+                <p class="value">Davao City, Davao Del Sur <i class="fas fa-chevron-down"></i></p>
+                </div>
+                <div>
+                <p class="label">Shipping Fee</p>
+                <p class="value">₱0 <i class="fas fa-chevron-down"></i></p>
+                </div>
+            </div>
+
+            <div class="quantity-section">
+                <label for="quantity">Quantity</label>
+                <select id="quantity">
+                <option value="1">1</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart"><i class="fas fa-cart-shopping"></i> Add to Cart</button>
+                <button class="buy-now">Buy Now <br><strong>₱650</strong></button>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+    
+    <script src="/js/main_js.js" defer></script>
+    <script src="/js/product_js.js" defer></script>
+</body>
+</html>

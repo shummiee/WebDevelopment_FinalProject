@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title || 'Profile' %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <%- include('auth/login') %>
+    <%- include('auth/registration') %>
+
+    <main class="profile-wrapper">
+        <section class="profile-container">
+        <div class="profile-left-section">
+            <div class="profile-sidebar">
+            <div class="profile-nav">
+                <button class="profile-tab-btn profile-active" data-tab="account">Account Details <span>&rarr;</span></button>
+                <button class="profile-tab-btn" data-tab="delivery">Delivery Details <span>&rarr;</span></button>
+                <button class="profile-tab-btn" data-tab="about">About Us <span>&rarr;</span></button>
+            </div>
+            <button class="profile-delete-btn">Delete Account <span>&rarr;</span></button>
+            </div>
+
+            <div class="profile-content-section">
+            <div class="profile-main-content" id="profile-tab-content">
+                <h1><strong>thrifter.</strong></h1>
+                <h2>Account Details</h2>
+                <div class="profile-form-group">
+                <label>Name:</label>
+                <input type="text" value="<%= user.name %>" />
+                </div>
+                <div class="profile-form-group">
+                <label>Age:</label>
+                <input type="text" value="<%= user.age %>" />
+                </div>
+                <div class="profile-form-group">
+                <label>Birthdate:</label>
+                <input type="date" value="<%= user.birthdate %>" />
+                </div>
+                <div class="profile-form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="<%= user.email %>" />
+                </div>
+                <div class="profile-form-group">
+                <label>Password:</label>
+                <input type="password" />
+                </div>
+                <button class="profile-update-btn">Update Profile <span>&rarr;</span></button>
+            </div>
+
+            <div class="delivery-section-wrapper" style="display: none;">
+                <div class="delivery-section">
+                <h1><strong>thrifter.</strong></h1>
+                <h2>Delivery Details</h2>
+                <button id="add-address-btn">Add Delivery Address +</button>
+                </div>
+            </div>
+
+            <div class="delivery-details" style="display: none;">
+                <h1><strong>thrifter.</strong></h1>
+                <h2>Delivery Details</h2>
+
+                <div class="profile-form-group">
+                <h3>Contact</h3>
+                <input type="text" placeholder="Name" />
+                <input type="tel" placeholder="Phone Number" />
+
+                <h3>Address</h3>
+                <input type="text" placeholder="Building/House No., Street Name" />
+
+                <!-- Use loops or data-driven selects if needed -->
+                <label>Barangay:</label>
+                <select>
+                    <option>-- Select Barangay --</option>
+                    <option>Barangay 1</option>
+                    <option>Barangay 2</option>
+                </select>
+
+                <label>City:</label>
+                <select>
+                    <option>-- Select City --</option>
+                    <option>Manila</option>
+                    <option>Cebu City</option>
+                </select>
+
+                <label>Province:</label>
+                <select>
+                    <option>-- Select Province --</option>
+                    <option>Metro Manila</option>
+                </select>
+
+                <label>Region:</label>
+                <select>
+                    <option>-- Select Region --</option>
+                    <option>Region IV-A - CALABARZON</option>
+                </select>
+
+                <input type="text" placeholder="Postal Code" />
+
+                <label>Label As:</label>
+                <button type="button" class="label-btn active">Home</button>
+                <button type="button" class="label-btn">Work</button>
+
+                <label class="default-checkbox">
+                    Set as Default Address
+                    <input type="checkbox" />
+                </label>
+
+                <button class="profile-update-btn">Save Address <span>&rarr;</span></button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <aside class="profile-side-nav">
+        <div class="side-nav-header">
+            <h3>HI <%= user.name.toUpperCase() %></h3>
+            <a href="/profile" class="visit-profile">Visit your profile <span>&rarr;</span></a>
+        </div>
+
+        <button class="side-nav-box">
+            <div>
+            <h4>Liked Products</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <span class="arrow">&rarr;</span>
+        </button>
+
+        <button class="side-nav-box">
+            <div>
+            <h4>Order Tracker</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <span class="arrow">&rarr;</span>
+        </button>
+
+        <button class="side-nav-box">
+            <div>
+            <h4>Purchased History</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <span class="arrow">&rarr;</span>
+        </button>
+
+        <button class="side-nav-box active">
+            <div>
+            <h4>Account Settings</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <span class="arrow">&rarr;</span>
+        </button>
+        <a href="/logout" class="logout-link">Logout</a>
+        </aside>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/js/main_js.js" defer></script>
+    <script src="/js/profile.js" defer></script>
+</body>
+</html>

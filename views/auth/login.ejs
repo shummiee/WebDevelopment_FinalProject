@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/style_main.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -12,13 +12,17 @@
     <div class="login-modal" id="loginModal">
         <div class="login-content">
             <span class="close-btn" id="closeLogin">&times;</span>
-            <h3>bad thrifts.</h3>
+            <h3>bad thrifts.</h1>
             <h2>Welcome back Thrifter!</h2>
             <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
             <p class="sign-inP">Sign in</p>
+
             <input type="email" id="email-login" placeholder="Email address*" required>
             <input type="password" id="password-login" placeholder="Password*" required>
+
             <button class="login-btn" id="loginBtn">Login →</button>
+
+            <p class="showRegister">Don't have an account yet? <a href="#" id="showRegister">Create Account!</a></p>
         </div>
     </div>
     <script src="/js/main_js.js" defer></script>

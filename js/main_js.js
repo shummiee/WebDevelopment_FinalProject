@@ -14,10 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("closeRegister");
   const userIcon = document.querySelector('a[aria-label="User"]');
 
-  userIcon.addEventListener("click", (e) => {
-    e.preventDefault();
-    registerModal.style.display = "flex";
-  });
+  if (userIcon) {
+    userIcon.addEventListener("click", (e) => {
+      e.preventDefault();
+      registerModal.style.display = "flex";
+    });
+  }
 
   closeBtn.addEventListener("click", () => {
     registerModal.style.display = "none";
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== MODAL: Register Step 2 ==========
+// ========== Register Step 2 ==========
 document.addEventListener("DOMContentLoaded", () => {
   const joinBtn = document.getElementById("continue-btn");
   const registerModal = document.getElementById("registerModal");
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== MODAL: Register Password Step ==========
+// ========== Password Step ==========
 document.addEventListener("DOMContentLoaded", () => {
   const createPassBtn = document.getElementById("createPass");
 
@@ -91,37 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ SEND TO BACKEND
     fetch("http://localhost:3000/api/users/register", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        birthDate,
-        email,
-        password,
-        confirmPassword,
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName, birthDate, email, password, confirmPassword }),
     })
       .then(async (res) => {
         const data = await res.json();
-        if (!res.ok) {
-          throw new Error(data.message || "Registration failed");
-        }
+        if (!res.ok) throw new Error(data.message);
         alert(data.message || "Registration successful!");
         document.getElementById("registerPassModal").style.display = "none";
         document.getElementById("loginModal").style.display = "flex";
       })
       .catch((err) => {
-      console.error("🔥 FETCH ERROR:", err);
-      alert(err.message || "Failed to fetch – check if server is reachable.");
-    });
+        console.error("🔥 FETCH ERROR:", err);
+        alert(err.message || "Failed to fetch – check if server is reachable.");
+      });
 
-
-    // Clear form fields
     document.getElementById("first-name").value = "";
     document.getElementById("last-name").value = "";
     document.getElementById("birth-date").value = "";
@@ -144,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== MODAL: Login ==========
+// ========== Login ==========
 document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginModal = document.getElementById("loginModal");
@@ -155,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -179,32 +167,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== Login/Modal Toggling ==========
+// ========== Modal Toggling ==========
 document.addEventListener("DOMContentLoaded", () => {
   const registerModal = document.getElementById("registerModal");
-  const loginModal = document.getElementById("loginModal");
   const registerPassModal = document.getElementById("registerPassModal");
+  const loginModal = document.getElementById("loginModal");
+  const showLoginLink = document.getElementById("showLogin");
+  const showRegisterLink = document.getElementById("showRegister");
   const closeLogin = document.getElementById("closeLogin");
   const closeRegisterPass = document.getElementById("closeRegisterPass");
-  const showLoginLink = document.getElementById("showLogin");
 
-  showLoginLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    registerModal.style.display = "none";
-    registerPassModal.style.display = "none";
-    loginModal.style.display = "flex";
-  });
+  if (showLoginLink) {
+    showLoginLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      registerModal.style.display = "none";
+      registerPassModal.style.display = "none";
+      loginModal.style.display = "flex";
+    });
+  }
 
-  closeLogin.addEventListener("click", () => {
-    loginModal.style.display = "none";
-  });
+  if (showRegisterLink) {
+    showRegisterLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      loginModal.style.display = "none";
+      registerModal.style.display = "flex";
+    });
+  }
 
-  closeRegisterPass.addEventListener("click", () => {
-    registerPassModal.style.display = "none";
-  });
+  if (closeLogin) closeLogin.addEventListener("click", () => loginModal.style.display = "none");
+  if (closeRegisterPass) closeRegisterPass.addEventListener("click", () => registerPassModal.style.display = "none");
 
   window.addEventListener("click", (e) => {
     if (e.target === loginModal) loginModal.style.display = "none";
     if (e.target === registerPassModal) registerPassModal.style.display = "none";
   });
+
+  
+
 });
+
+// ========== PRODUCT CLICK REDIRECT ==========
+document.addEventListener("DOMContentLoaded", function () {
+  const productCards = document.querySelectorAll(".product-card");
+
+  productCards.forEach((card) => {
+    card.style.cursor = "pointer";
+    card.addEventListener("click", () => {
+      window.location.href = "/viewProducts";
+    });
+  });
+});
+

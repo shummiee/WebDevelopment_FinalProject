@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-// 🧪 Check if backend is running and route is working
+// 🧪 Test route
 router.get('/', async (req, res) => {
   try {
     const users = await User.find();
@@ -29,6 +29,8 @@ router.post('/register', async (req, res) => {
   }
 
   try {
+    console.log('📨 Registering:', req.body);
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email is already registered' });
@@ -48,8 +50,8 @@ router.post('/register', async (req, res) => {
     res.status(201).json({ message: 'User registered successfully!' });
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error saving user to database' });
+    console.error("💥 DB ERROR:", err);
+    res.status(500).json({ message: err.message || 'Error saving user to database' });
   }
 });
 

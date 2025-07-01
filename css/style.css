@@ -93,7 +93,7 @@ nav {
   flex-direction: row;
   gap: 60px;
   z-index: 200;
-  min-width: 500px;
+  min-width: 250px;
   border-top: 2px solid black;
 }
 
@@ -266,16 +266,18 @@ nav {
   color: black;
 }
 
-.slide-text button {
+.shop-btn {
   background: white;
+  color: #000;
   border: 2px solid black;
   padding: 6px 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.slide-text button:hover {
+.shop-btn:hover {
   background: black;
   color: white;
 }
@@ -306,7 +308,22 @@ nav {
   position: relative;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   align-items: center;
-}s
+}
+
+.login-content .showRegister {
+  display: block;
+  font-size: 12px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.login-content a {
+  color: #333;
+}
+
+.login-content a:hover {
+  color: #000;
+}
 
 .close-btn {
   position: absolute;
@@ -570,7 +587,7 @@ input::placeholder {
 }
 
 /* Products Grid */
-.products-grid {
+.prev-products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
@@ -579,6 +596,28 @@ input::placeholder {
   margin-top: 30px;
 }
 
+.products-new {
+  padding-top: 80px; /* push content below fixed header */
+}
+
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 10px 40px; /* top-bottom, left-right padding */
+  margin: 0 auto;      /* centers the grid horizontally */
+  max-width: 1200px;
+}
+
+.section-title h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: left;
+  margin: 0 auto 10px;
+  max-width: 1200px;
+  padding: 0 40px;
+}
 /* Product Card */
 .product-card {
   background: rgb(238, 237, 237);
@@ -627,10 +666,7 @@ input::placeholder {
   font-size: 0.85em;
   text-align: right;
   font-style: italic;
-}
-
-.low-stock .stock-label {
-  color: #e67e22;
+  color: #008106;
 }
 
 .sold-out .stock-label {
@@ -638,12 +674,549 @@ input::placeholder {
 }
 
 footer {
-  background-color: rgb(34, 32, 32);
+  background-color: #2d2d2b;
   color: white;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: 40px;
+  text-align: center;
 }
 
 footer p {
   text-align: center;
 }
+
+/* For Product View */
+
+.product-detail-container {
+  display: flex;
+  gap: 40px;
+  background-color: #e6e6e6;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 105px;
+}
+
+.product-images {
+  flex: 1;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin-bottom: 15px;
+  transition: opacity 0.1s ease;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+}
+
+.thumbnails img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.like-btn {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.product-details {
+  flex: 2;
+}
+
+.product-details h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.brand {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.stock {
+  color: green;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.shipping-info {
+  display: flex;
+  gap: 60px;
+  margin: 20px 0;
+}
+
+.shipping-info .label {
+  font-size: 14px;
+  color: #555;
+}
+
+.shipping-info .value {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: #333;
+}
+
+.quantity-section select {
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.add-to-cart {
+  padding: 0 15px;
+  background-color: #d9d3cb;
+  border: 2px solid #222;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.buy-now {
+  background-color: #222;
+  color: #d9d3cb;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.in-stock {
+  color: green;
+}
+
+/* Profile */
+
+* {
+  box-sizing: border-box;
+}
+
+.profile-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-right: 400px;
+  margin-top: 60px;
+}
+
+.profile-content-container {
+  flex-grow: 1;
+}
+
+.profile-main-content,
+.delivery-section-wrapper,
+.delivery-details {
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+
+.delivery-details {
+  display: none;
+}
+
+.profile-left-section {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: stretch;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 60px;
+}
+
+
+
+/* Sidebar */
+.profile-sidebar {
+  background-color: #2d2d2b;
+  width: 230px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  min-height: 500px;
+  border-radius: 4px;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-tab-btn {
+  padding: 10px 15px;
+  font-weight: bold;
+  color: white;
+  background: none;
+  border: 2px solid #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-tab-btn.profile-active {
+  background-color: black;
+  border: 2px solid black;
+}
+
+.profile-tab-btn:hover {
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+
+.profile-delete-btn {
+  border: 2px solid red;
+  background: none;
+  color: red;
+  font-weight: bold;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.profile-delete-btn:hover {
+  color: white;
+  background-color: red;
+}
+
+.profile-main-content.active,
+.delivery-section.active,
+.delivery-details.active {
+  display: block;
+}
+
+.profile-content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+/* Main Content */
+.profile-main-content {
+  width: 450px;
+  padding: 10px;
+  margin-left: 20px;
+  background: white;
+  border-radius: 5px;
+}
+
+.profile-main-content h1 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: right;
+}
+
+.profile-main-content h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.profile-form-group {
+  margin-bottom: 11px;
+}
+
+.profile-form-group label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.profile-form-group input {
+  width: 70%;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #999;
+}
+
+/* Update Button */
+.profile-update-btn {
+  background-color: black;
+  color: white;
+  padding: 12px 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-update-btn:hover {
+  background-color: #333;
+}
+
+/* Right-side Navigation */
+.profile-side-nav {
+  position: fixed;
+  top: 60px;               /* space below the header */
+  bottom: 0px;            /* space above the footer */
+  right: 0px;
+  width: 300px;
+  background-color: #2d2d2b;
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+
+@media (max-width: 768px) {
+  .profile-wrapper {
+    flex-direction: column;
+    padding: 140px 20px 20px;
+  }
+
+  .profile-side-nav {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+.side-nav-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.side-nav-header .visit-profile {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.side-nav-box {
+  all: unset;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.side-nav-box:hover {
+  background-color: #000;
+  border: 2px solid #000;
+}
+
+.side-nav-box.active {
+  background-color: #000;
+  border: 2px solid #000;
+}
+
+.side-nav-box.active:hover {
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+}
+
+.side-nav-box div h4 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.side-nav-box div p {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+}
+
+.logout-link {
+  margin-top: auto;
+  text-align: right;
+  text-decoration: underline;
+  color: white;
+  font-size: 14px;
+}
+
+/* wrap del */
+
+.delivery-section {
+  width: 450px;
+  padding: 10px;
+  background: white;
+  margin-top: -30px;
+  margin-left: -10px;
+}
+
+.delivery-section h1 {
+  font-size: 16px;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+
+.delivery-section h2 {
+  font-size: 22px;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+#add-address-btn {
+  padding: 30px 24px;
+  border: 2px solid #000;
+  background: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-address-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Delivery */
+
+/* Only affects the delivery-details section */
+
+.delivery-details {
+  width: 450px;
+  padding: 10px;
+  background: white;
+  margin-left: 20px;
+}
+.delivery-details h2 {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.delivery-details h1 {
+  font-size: 16px;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.delivery-details h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.delivery-details input,
+.delivery-details select {
+  width: 70%;
+  padding: 8px 12px;
+  border: 1px solid #999;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.delivery-details button {
+  border: 1px solid #000;
+  border-radius: 22px;
+  padding: 10px;
+  width: 30%;
+  background: transparent;
+}
+
+.delivery-details button:hover {
+  background-color: #000;
+  color: #ccc;
+}
+
+.delivery-details button.active {
+  background-color: #000;
+  color: #ccc;
+}
+
+.delivery-details label {
+  font-weight: bold;
+  display: block;
+}
+
+.default-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+  margin-left: 155px;
+}
+
+.default-checkbox input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  accent-color: black; /* modern browsers */
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.delivery-details .profile-update-btn {
+  width: 35%;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  margin-top: -4px;
+}
+
+

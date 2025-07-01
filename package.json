@@ -1,18 +1,25 @@
 {
   "name": "webdev_project",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backend/server.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Theeenaaa/WebDev_Project.git"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "mongodb": "^6.17.0",
     "mongoose": "^8.16.0",
-    "open": "^9.1.0"
+    "open": "^10.1.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

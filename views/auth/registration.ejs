@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up</title>
-  <link rel="stylesheet" href="/css/style_main.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="/js/main_js.js" defer></script>
+
 </head>
 <body>
 
@@ -15,12 +17,10 @@
       <span class="close-btn" id="closeRegister">&times;</span>
       <h2>Be a Thrifter!</h2>
       <p>Get free shipping, vouchers and members-only products when you're a thrifter.</p>
-
       <input type="email" id="email-register" placeholder="Email address*" required />
       <label><input type="checkbox" id="age" required /> Yes, I am 18+ years old.<span>*</span></label>
       <label><input type="checkbox" id="terms" required /> I acknowledge the policies and terms.<span>*</span></label>
       <label><input type="checkbox" id="news" /> I agree to receive marketing emails.</label>
-
       <button class="submit-btn" id="continue-btn">Continue →</button>
       <p>Have an account already? <a href="#" id="showLogin">Login Here!</a></p>
     </div>
@@ -56,6 +56,21 @@
       </div>
 
       <button class="create-pass" id="createPass">Create Account →</button>
+    </div>
+  </div>
+
+  <!-- LOGIN Modal (optional if not already included) -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-content">
+      <span class="close-btn" id="closeLogin">&times;</span>
+      <h1>bad thrifts.</h1>
+      <h2>Welcome back Thrifter!</h2>
+      <p>We miss you, login now to use your free shipping, vouchers and members-only products!</p>
+      <p class="sign-inP">Sign in</p>
+      <input type="email" id="email-login" placeholder="Email address*" required />
+      <input type="password" id="password-login" placeholder="Password*" required />
+      <button class="login-btn" id="loginBtn">Login →</button>
+      <p class="showRegister">Don’t have an account? <a href="#" id="showRegister">Create Account!</a></p>
     </div>
   </div>
 
