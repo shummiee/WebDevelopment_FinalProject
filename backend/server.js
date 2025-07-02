@@ -42,6 +42,10 @@ app.get('/profile', (req, res) => {
   res.render('profile');
 });
 
+app.get('/cart', (req, res) => {
+  res.render('cart');
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

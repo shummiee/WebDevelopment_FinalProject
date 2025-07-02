@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -124,16 +124,74 @@
         </div>
     </div>
 
-    <section class="cart-section" id="cartSection">
-        <form class="cart-content" id="cartContent">
+    <div class="cart-wrap">
+        <div class="cart-header">
+            <input type="checkbox" class="select-all"/>
+            <span>All Products</span>
+        </div>
 
-        </form>
-    </section>
+        <div class="cart-item">
+            <input type="checkbox" />
+            <div class="product-img"></div>
+            <div class="product-info-cart">
+                <strong>Product Name</strong>
+                <p><em>Brand: Chuchu</em></p>
+            </div>
+            <div class="unit-price">₱530</div>
+            <div class="quantity-selector">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <div class="remove-btn">Remove</div>
+        </div>
 
+        <div class="cart-item">
+            <input type="checkbox" />
+            <div class="product-img"></div>
+            <div class="product-info-cart">
+                <strong>Product Name</strong>
+                <p><em>Brand: Chuchu</em></p>
+            </div>
+            <div class="unit-price">₱530</div>
+            <div class="quantity-selector">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <div class="remove-btn">Remove</div>
+        </div>
+
+        <div class="cart-item sold-out">
+            <input type="checkbox" class="sold-out-cb" disabled/>
+            <div class="product-img"></div>
+            <div class="product-info-cart">
+                <small class="sold-label">Sold out!</small>
+                <strong>Product Name</strong>
+                <p><em>Brand: Chuchu</em></p>
+            </div>
+            <div class="unit-price">₱530</div>
+            <div class="quantity-selector">
+                <button disabled>-</button>
+                <span>0</span>
+                <button disabled>+</button>
+            </div>
+            <div class="remove-btn">Remove</div>
+        </div>
+    </div>
     <footer>
-        <p>CMS Co. | Contact Us: cmsCO@gmail.com</p>
+        <div class="cart-footer">
+            <input type="checkbox" />
+            <span>Select All</span>
+            <button>Delete</button>
+            <button>Remove inactive products</button>
+            <div class="cart-total">
+                <span>Total (0 item):</span>
+                <strong>₱0</strong>
+                <button class="checkout-btn">Checkout <i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
     </footer>
 </body>
 <script src="js/main_js.js" defer></script>
-<script src="js/profile.js" defer></script>
 </html>
