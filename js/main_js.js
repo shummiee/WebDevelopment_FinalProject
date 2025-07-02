@@ -9,7 +9,7 @@ setInterval(() => {
 }, 1000);
 
 // ========== MODAL: Register Step 1 ==========
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const registerModal = document.getElementById("registerModal");
   const closeBtn = document.getElementById("closeRegister");
   const userIcon = document.querySelector('a[aria-label="User"]');
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       registerPassModal.style.display = "flex";
     }
   });
-});*/
+});
 
 // ========== Password Step ==========
 document.addEventListener("DOMContentLoaded", () => {

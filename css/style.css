@@ -13,6 +13,15 @@ html
     font-family: 'Arial', sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
 header {
   display: flex;
   flex-direction: column;
@@ -1472,4 +1481,144 @@ footer p {
 
 .add-product-content input[type="file"] {
   margin-bottom: 10px;
+}
+
+/*Cart*/
+.cart-wrap {
+  background: #2c2c28;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 1300px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 40px 80px 1fr 80px 120px 100px 80px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.cart-footer {
+  border-bottom: 1px solid #444;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+.cart-item input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+.product-img {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.product-info-cart {
+  flex: 1;
+}
+
+.unit-price,
+.total-price,
+.remove-btn {
+  text-align: center;
+  font-size: 15px;
+}
+
+.quantity-selector {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  font-size: 15px;
+}
+
+.quantity-selector button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.quantity-selector button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.remove-btn {
+  cursor: pointer;
+  color: #f77;
+}
+
+.sold-out .product-info-cart {
+  position: relative;
+}
+
+.sold-label {
+  position: absolute;
+  top: 30px;
+  left: -140px;
+  font-style: italic;
+  font-size: 9px;
+  color: #ccc;
+}
+
+.cart-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  color: #d5d5d5;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cart-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 10px;
+  color: #d5d5d5;
+}
+
+.cart-total {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-total strong {
+  color: #ff3c3c;
+}
+
+.checkout-btn {
+  background: black;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.checkout-btn i {
+  margin-left: 5px;
 }
