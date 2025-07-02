@@ -38,6 +38,10 @@ app.get('/viewProducts', (req, res) => {
   res.render('viewProducts');
 });
 
+app.get('/profile', (req, res) => {
+  res.render('profile');
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

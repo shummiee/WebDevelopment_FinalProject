@@ -53,7 +53,7 @@
           <input type="text" placeholder="Search" />
           <button><i class="fas fa-search"></i></button>
         </div>
-        <a href="#" aria-label="User"><i class="fas fa-user"></i></a>
+        <a href="#" aria-label="User" id="openProfile"><i class="fas fa-user"></i></a>
         <a href="#" aria-label="Liked"><i class="fas fa-heart"></i></a>
         <div class="cart-wrapper">
           <a href="#" aria-label="Cart"><i class="fas fa-bag-shopping"></i></a>
@@ -145,6 +145,46 @@
       <button class="login-btn" id="loginBtn">Login →</button>
 
       <p class="showRegister">Don’t have an account? <a href="#" id="showRegister">Create Account!</a></p>
+    </div>
+  </div>
+
+  <!-- ========== PROFILE MODAL (if logged in) ========== -->
+  <div class="profile-modal" id="profileModal">
+    <div class="profile-content">
+      <h3>Hi Lorem Ipsum</h3>
+      <a href="#">Visit your profile <span>&rarr;</span></a>
+      <button class="side-nav-box">
+        <div>
+          <h4>Liked Products</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <button class="side-nav-box">
+        <div>
+          <h4>Order Tracker</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <button class="side-nav-box">
+        <div>
+          <h4>Purchased History</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <a href="profile.html" class="side-nav-box">
+        <div>
+          <h4>Account Settings</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a href="#" class="logout-link">Logout</a>
     </div>
   </div>
 

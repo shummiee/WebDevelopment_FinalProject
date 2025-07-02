@@ -9,7 +9,7 @@ setInterval(() => {
 }, 1000);
 
 // ========== MODAL: Register Step 1 ==========
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   const registerModal = document.getElementById("registerModal");
   const closeBtn = document.getElementById("closeRegister");
   const userIcon = document.querySelector('a[aria-label="User"]');
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       registerPassModal.style.display = "flex";
     }
   });
-});
+});*/
 
 // ========== Password Step ==========
 document.addEventListener("DOMContentLoaded", () => {
@@ -176,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const showRegisterLink = document.getElementById("showRegister");
   const closeLogin = document.getElementById("closeLogin");
   const closeRegisterPass = document.getElementById("closeRegisterPass");
-
   if (showLoginLink) {
     showLoginLink.addEventListener("click", (e) => {
       e.preventDefault();
@@ -201,10 +200,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === loginModal) loginModal.style.display = "none";
     if (e.target === registerPassModal) registerPassModal.style.display = "none";
   });
-
-  
-
 });
+
+// ========== Profile Modal Toggling (if logged in) ==========
+
+document.addEventListener("DOMContentLoaded", () => {
+  const profileModal = document.getElementById("profileModal");
+  const openProfileBtn = document.getElementById("openProfile");
+  const closeProfileBtn = document.getElementById("closeProfile");
+
+  openProfileBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    profileModal.classList.add("show");
+  });
+
+  closeProfileBtn?.addEventListener("click", () => {
+    profileModal.classList.remove("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    const isClickInside = profileModal.contains(e.target);
+    const isModalVisible = profileModal.classList.contains("show");
+
+    if (isModalVisible && !e.target.closest(".profile-content") && !e.target.closest("#openProfile")) {
+      profileModal.classList.remove("show");
+    }
+  });
+});
+
+
 
 // ========== PRODUCT CLICK REDIRECT ==========
 document.addEventListener("DOMContentLoaded", function () {

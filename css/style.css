@@ -189,6 +189,61 @@ nav {
   display: block;
 }
 
+/*profile modal*/
+
+.profile-modal {
+  position: fixed;
+  top: 0;
+  margin-top: 60px;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background-color: #2f2f2f;
+  transition: right 0.3s ease;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.profile-modal.show {
+  right: 0;
+  pointer-events: auto;
+}
+
+.profile-content {
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.profile-content h3 {
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-content a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.profile-content a:hover{
+  color: black;
+}
+
+.logout-link {
+  display: block;
+  text-align: right;
+  color: white;
+  font-size: 14px;
+}
+
+.logout-link:hover {
+  color: black;
+}
+
+
 /*width: 1351px;
   height: 600px;*/
 .fade-slider {
@@ -1061,6 +1116,8 @@ footer p {
   align-items: center;
   text-align: left;
   gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
