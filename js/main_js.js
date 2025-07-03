@@ -271,7 +271,11 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.removeItem("loggedInUser");
-    document.getElementById("profileModal").classList.remove("show");
-    window.location.reload();
+
+    const profileModal = document.getElementById("profileModal");
+    if (profileModal) profileModal.classList.remove("show");
+
+    window.location.href = "/main"; // ✅ Go back to login/register page
   });
 });
+
