@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script src="/js/main_js.js" defer></script>
+    <script src="/js/admin.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#main">Bad Thrifts.</a>
+            </div>
+            <ul class="admin-nav">
+                <li class="has-submenu">
+                <a href="#">Products</a>
+                <div class="submenu">
+                    <div class="column">
+                        <a href="#productsMen">Men</a>
+                        <a href="#productsWomen">Women</a>
+                    </div>
+                </div>
+                </li>
+                <li class="admin-nav">
+                    <a href="#">Users</a>
+                    <a href="#">Orders</a>
+                </li>
+            </ul>
+
+            <div class="right-align">
+                <div class="search-box">
+                    <input type="text" placeholder="Search" />
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="view-orders-container">
+        <div class="view-orders-content">
+            <h1>ORDERS</h1>
+            <div class="order-date">
+                <input type="date">
+            </div>
+            <div class="order-grid">
+                <div class="view-orders-box">
+                    <h3 class="order-id">123456</h3>
+                    <div class="customer-details">
+                        <p>Name: <span>customer name</span></p>
+                        <p>Address: <span>address deets</span></p>
+                        <p>Contact Number: <span>contact deets</span></p>
+                    </div>
+                    <details class="order-details">
+                        <summary>View order details</summary>
+                        <div class="product-img-checkout"><p>img</p></div>
+                        <strong>Product Name <span class="unit-price">₱unit</span></strong>
+                        <p><em>Brand: Chuchu</em></p>
+                        
+                        <div class="product-img-checkout"><p>img</p></div>
+                        <strong>Product Name <span class="unit-price">₱unit</span></strong>
+                        <p><em>Brand: Chuchu</em></p>
+                        <p class="total-tracker">Total # item: <span class="price-track">₱total</span></p>
+                    </details>
+                    <div class="ship-out">
+                        <button class="ship-out-btn">Ship Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
