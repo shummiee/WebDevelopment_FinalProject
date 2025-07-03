@@ -5,12 +5,17 @@ const cors = require('cors');
 const open = require('open').default;
 const path = require('path');
 const userRoutes = require('./routes/user');
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+const productRoutes = require('./routes/products');
+
+require('dotenv').config();
+console.log('__dirname:', __dirname);
+console.log('MONGO_URI:', process.env.MONGO_URI);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/users', userRoutes);
+app.use('/products', productRoutes);
 
 // Serve your CSS/JS/IMG etc from the project root
 app.use(express.static(path.join(__dirname, '..')));
