@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="login-modal" id="loginModal">
-        <div class="login-content">
-            <span class="close-btn" id="closeLogin">&times;</span>
-            <h3>bad thrifts.</h3>
-            <h2>Welcome back Thrifter!</h2>
-            <p>We miss you, login to purchase your future fit!</p>
-            <p class="sign-inP">Sign in</p>
+  <!-- ✅ FINAL: Pure page, no modal so you see it directly -->
+  <main class="login-page">
+    <h1>✅ Login Page</h1>
+    <h2>Welcome back Thrifter!</h2>
+    <p>We miss you, login to purchase your future fit!</p>
+    <p class="sign-inP">Sign in</p>
 
-            <input type="email" id="email-login" placeholder="Email address*" required>
-            <input type="password" id="password-login" placeholder="Password*" required>
+    <form action="/api/users/login" method="POST" class="login-form">
+      <label>Email address*</label>
+      <input type="email" name="email" placeholder="Email" required />
 
-            <button class="login-btn" id="loginBtn">Login →</button>
+      <label>Password*</label>
+      <input type="password" name="password" placeholder="Password" required />
 
-            <p class="showRegister">Don't have an account yet? <a href="#" id="showRegister">Create Account!</a></p>
-        </div>
-    </div>
+      <button type="submit" class="login-btn">Login →</button>
+    </form>
 
-    <script src="/js/main_js.js" defer></script>
+    <p class="showRegister">
+      Don't have an account yet?
+      <a href="#" id="showRegister">Create Account!</a>
+    </p>
+  </main>
+
+  
 </body>
 </html>

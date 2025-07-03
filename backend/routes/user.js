@@ -3,7 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-
+// ✅ Confirm this file loads!
+console.log('✅ user.js loaded!');
 
 // 🧪 Test route
 router.get('/', async (req, res) => {
@@ -21,7 +22,6 @@ router.post('/register', async (req, res) => {
 
   const { firstName, lastName, birthDate, email, password, confirmPassword } = req.body;
 
-  // 🔒 Validation
   if (!firstName || !lastName || !birthDate || !email || !password || !confirmPassword) {
     return res.status(400).json({ message: 'Please fill in all fields' });
   }
@@ -76,12 +76,10 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
-    // ✅ Set session BEFORE responding
+    // ✅ Set session
     req.session.userId = user._id;
     req.session.username = user.firstName;
     req.session.isAdmin = user.isAdmin;
-
-    
 
     res.status(200).json({ 
       message: `Welcome back, ${user.firstName}!`, 
@@ -99,7 +97,30 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// ✅ LOGOUT (final)
+router.get('/logout', (req, res) => {
+  console.log("🔑 LOGOUT HIT");
+
+  if (!req.session) {
+    console.log("❌ Session undefined, cannot destroy");
+    return res.redirect('/auth/login');
+  }
+
+  req.session.destroy(err => {
+    if (err) {
+      console.error(err);
+      return res.redirect('/');
+    }
+    res.clearCookie('connect.sid');
+    res.redirect('/auth/login');
+  });
+});
 
 
+// ✅ Extra test route (optional)
+router.get('/test', (req, res) => {
+  res.send('✅ User route test OK!');
+});
 
 module.exports = router;
+

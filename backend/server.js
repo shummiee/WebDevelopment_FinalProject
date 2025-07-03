@@ -1,85 +1,79 @@
-// backend/server.js
 const express = require('express');
-const session = require('express-session');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const open = require('open').default;
 const path = require('path');
-const userRoutes = require('./routes/user');
+const session = require('express-session');
 
+const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/products');
+const adminRoutes = require('./routes/admin');
 
 require('dotenv').config();
 console.log('__dirname:', __dirname);
 console.log('MONGO_URI:', process.env.MONGO_URI);
 
-const adminRoutes = require('./routes/admin');
-
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
-
 const app = express();
+
+// ✅ Middleware: CORS & JSON
 app.use(cors());
+app.use(express.json());
+
+// ✅ Sessions: always before routes!
 app.use(session({
-  secret: 'supersecretkey', // change this to something secure
+  secret: 'YOUR_SECRET_KEY',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // use true only if using HTTPS
+  cookie: { secure: false } // true only with HTTPS
 }));
 
-app.use(express.json());
+// ✅ Routes: API + Admin
 app.use('/api/users', userRoutes);
-
-app.use('/products', productRoutes);
-
 app.use('/admin', adminRoutes);
 
-
-// Serve your CSS/JS/IMG etc from the project root
+// ✅ Static files & EJS views
 app.use(express.static(path.join(__dirname, '..')));
-
-// Tell Express to look for EJS files one level up in /views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'views'));
 
-// Connect to MongoDB Atlas
-mongoose
-  .connect(process.env.MONGO_URI, { dbName: 'BadThrifts' })
+// ✅ MongoDB connection
+mongoose.connect(process.env.MONGO_URI, { dbName: 'BadThrifts' })
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
-// --- Your page routes ---
+// ✅ Page routes — pass userId except login
 app.get('/main', (req, res) => {
-  res.render('main');
+  console.log("✅ /main route hit!");
+  res.render('main', { userId: req.session.userId });
 });
 
 app.get('/products', (req, res) => {
-  res.render('products');
+  console.log("✅ /products route hit!");
+  res.render('products', { userId: req.session.userId });
 });
 
 app.get('/viewProducts', (req, res) => {
-  res.render('viewProducts');
+  console.log("✅ /viewProducts route hit!");
+  res.render('viewProducts', { userId: req.session.userId });
 });
 
 app.get('/profile', (req, res) => {
-  res.render('profile');
+  console.log("✅ /profile route hit!");
+  res.render('profile', { userId: req.session.userId });
 });
 
 app.get('/cart', (req, res) => {
-  res.render('cart');
+  console.log("✅ /cart route hit!");
+  res.render('cart', { userId: req.session.userId });
 });
 
-// backend/server.js
-app.get('/main', (req, res) => {
-  const user = {
-    firstName: req.session.username || null,
-    isAdmin: req.session.isAdmin || false
-  };
-  res.render('main', { user });
+// ✅ Login: DO NOT pass userId
+app.get('/auth/login', (req, res) => {
+  console.log("✅ /auth/login route hit!");
+  res.render('auth/login'); // NO userId!
 });
 
-
-
-// Start server
+// ✅ Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}/main`);

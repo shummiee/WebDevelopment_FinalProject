@@ -223,9 +223,10 @@
     </div>
 
   <!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION START -->
-  <section class="products-admin">
-    <h2>All Products (Database)</h2>
-    <div class="products-grid">
+<section class="products-admin">
+  <h2>All Products (Database)</h2>
+  <div class="products-grid">
+    <% if (typeof products !== 'undefined' && products.length > 0) { %>
       <% products.forEach(product => { %>
         <div class="product-card">
           <div class="product-image">
@@ -248,9 +249,13 @@
           </div>
         </div>
       <% }) %>
-    </div>
-  </section>
-  <!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION END -->
+    <% } else { %>
+      <p>No products found.</p>
+    <% } %>
+  </div>
+</section>
+<!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION END -->
+
 
     <%- include('../partials/footer') %>
 </body>
