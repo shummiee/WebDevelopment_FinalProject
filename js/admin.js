@@ -1,5 +1,6 @@
 // ========== ADD PRODUCTS ==========
 
+
 document.addEventListener("DOMContentLoaded", () => {
   // Modal open/close setup
   const openModalBtn = document.getElementById("addProduct"); // Add Product +
