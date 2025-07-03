@@ -1641,6 +1641,7 @@ footer p {
   width: 100%;
   padding: 2rem;
   margin: 2rem auto; 
+  margin-top: 100px;
 }
 
 .checkout-content h1 {
@@ -1836,4 +1837,376 @@ footer p {
 
 .place-order-btn:hover {
   color: #444;
+}
+
+/*PURCHASED HISTORY*/
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background-color: #f3f3f3;
+}
+
+/* Wrapper for the white box */
+.purchased-history-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  margin-top: 100px;
+}
+
+.purchased-history-container {
+  background-color: white;
+  border-radius: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Main purchase box */
+.purchased-history-content {
+  border: 2px solid black;
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Top heading with status */
+.purchased-history-content h3 {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.to-received {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Product Image Placeholder */
+.preview-purchase {
+  width: 80px;
+  height: 80px;
+  background-color: #a8a296;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Product Info */
+.purchased-history-content strong {
+  font-size: 1rem;
+}
+
+.purchased-history-content p {
+  font-size: 0.9rem;
+}
+
+.preview-unit-price {
+  font-weight: bold;
+  grid-column: 3;
+  grid-row: 2 / span 2;
+}
+
+/* Total preview under the summary */
+.total-preview {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Expandable Details */
+.view-purchase {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+.view-purchase details {
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.view-purchase summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.view-purchase strong {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.tracker-unit-price {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.total-tracker {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/*ORDER TRACKER*/
+
+/* General layout */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  margin-top: 100px;
+}
+
+.order-tracker-container {
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* Main boxed content */
+
+.product-details {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  margin-left: -10px; /* 👈 Adds the 20px spacing between image and text */
+  margin-top: 5px;
+}
+
+.order-tracker-content {
+  border: 2px solid black;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto auto auto auto auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.product-brand {
+  grid-column: 2;
+  font-size: 0.9rem;
+  margin-top: 0; /* Optional: pull brand closer to product name */
+}
+
+/* Header and status */
+.order-tracker-content h3 {
+  grid-column: 1 / 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.to-received {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Product image */
+.product-img-checkout {
+  grid-row: 2 / 5;
+  width: 80px;
+  height: 80px;
+  background-color: #a8a296;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Product name and brand */
+.order-tracker-content strong {
+  font-size: 1rem;
+}
+
+.order-tracker-content p {
+  font-size: 0.9rem;
+}
+
+/* Price and total */
+.tracker-unit-price {
+  font-weight: bold;
+}
+
+.total-tracker {
+  grid-column: 3;
+  font-size: 0.9rem;
+}
+
+/* Delivery info */
+.delivery-status {
+  font-size: 0.9rem;
+}
+
+.delivery-status em {
+  color: gray;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* Order Received button */
+.order-received-btn {
+  grid-column: 3;
+  justify-self: end;
+  align-self: end;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 35px;
+  margin-bottom: -20px;
+}
+
+.order-received-btn:hover {
+  background: #2d2d2b;
+}
+
+/*ADMIN VIEW ORDERS*/
+
+/* Container styling */
+.view-orders-container {
+  padding: 40px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Header */
+.view-orders-content h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Date input */
+.order-date input[type="date"] {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+/* Grid layout */
+.order-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Order box */
+.view-orders-box {
+  background: none;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 16px;
+  width: 300px;
+  box-shadow: 0 0 20px #222;
+}
+
+/* Order ID */
+.order-id {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Customer details */
+.customer-details p {
+  font-style: italic;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.customer-details span {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Details summary */
+.order-details summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.order-details[open] summary {
+  margin-bottom: 10px;
+}
+
+/* Product block */
+.product-img-checkout {
+  background: #ddd;
+  width: 40%;
+  height: 100px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unit-price {
+  float: right;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.total-tracker {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.price-track {
+  float: right;
+}
+
+/* Ship out button */
+.ship-out {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.ship-out-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ship-out-btn:hover {
+  background-color: #333;
 }
