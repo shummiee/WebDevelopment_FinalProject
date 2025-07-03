@@ -46,6 +46,14 @@ app.get('/cart', (req, res) => {
   res.render('cart');
 });
 
+// backend/server.js
+app.get('/main', async (req, res) => {
+  // Example logic to pass user (you need session/token normally)
+  const loggedInUser = req.query.user || null; // just for example
+  res.render('main', { user: loggedInUser });
+});
+
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

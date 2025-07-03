@@ -74,11 +74,19 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
-    res.status(200).json({ message: `Welcome back, ${user.firstName}!` });
+    res.status(200).json({ 
+      message: `Welcome back, ${user.firstName}!`, 
+      user: {
+        firstName: user.firstName,
+        email: user.email
+      }
+    });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Login failed due to server error' });
   }
 });
+
 
 module.exports = router;

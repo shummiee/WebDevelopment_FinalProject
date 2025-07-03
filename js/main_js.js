@@ -12,18 +12,12 @@ setInterval(() => {
 document.addEventListener("DOMContentLoaded", () => {
   const registerModal = document.getElementById("registerModal");
   const closeBtn = document.getElementById("closeRegister");
-  const userIcon = document.querySelector('a[aria-label="User"]');
 
-  if (userIcon) {
-    userIcon.addEventListener("click", (e) => {
-      e.preventDefault();
-      registerModal.style.display = "flex";
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      registerModal.style.display = "none";
     });
   }
-
-  closeBtn.addEventListener("click", () => {
-    registerModal.style.display = "none";
-  });
 
   window.addEventListener("click", (e) => {
     if (e.target === registerModal) {
@@ -39,12 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const registerPassModal = document.getElementById("registerPassModal");
   const emailInput = registerModal.querySelector('input[type="email"]');
 
-  joinBtn.addEventListener("click", () => {
+  joinBtn?.addEventListener("click", () => {
     const email = emailInput.value.trim();
     const ageCheckbox = document.getElementById("age").checked;
     const termsCheckbox = document.getElementById("terms").checked;
 
-    if (email === "" || !ageCheckbox || !termsCheckbox) {
+    if (!email || !ageCheckbox || !termsCheckbox) {
       alert("Please fill in all required fields before continuing.");
     } else {
       registerModal.style.display = "none";
@@ -53,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== Password Step ==========
+// ========== Register Final Step ==========
 document.addEventListener("DOMContentLoaded", () => {
   const createPassBtn = document.getElementById("createPass");
 
-  createPassBtn.addEventListener("click", (e) => {
+  createPassBtn?.addEventListener("click", (e) => {
     e.preventDefault();
 
     const firstName = document.getElementById("first-name").value.trim();
@@ -66,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email-register").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("cPassword").value;
-    const showPassCheckbox = document.getElementById("see-pass");
 
     if (!firstName || !lastName || !birthDate || !email || !password || !confirmPassword) {
       alert("Please fill in all required fields.");
@@ -115,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("birth-date").value = "";
     document.getElementById("password").value = "";
     document.getElementById("cPassword").value = "";
-    showPassCheckbox.checked = false;
+    document.getElementById("see-pass").checked = false;
   });
 });
 
@@ -125,23 +118,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const password = document.getElementById("password");
   const confirmPassword = document.getElementById("cPassword");
 
-  showPassCheckbox.addEventListener("change", function () {
+  showPassCheckbox?.addEventListener("change", function () {
     const type = this.checked ? "text" : "password";
     password.type = type;
     confirmPassword.type = type;
   });
 });
 
-// ========== Login ==========
+// ========== LOGIN ==========
 document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginModal = document.getElementById("loginModal");
-  const emailInput = document.getElementById("email-login");
-  const passwordInput = document.getElementById("password-login");
 
-  loginBtn.addEventListener("click", () => {
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
+  loginBtn?.addEventListener("click", () => {
+    const email = document.getElementById("email-login").value.trim();
+    const password = document.getElementById("password-login").value.trim();
 
     if (!email || !password) {
       alert("Please fill in all required fields.");
@@ -156,10 +147,14 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(async (res) => {
         const data = await res.json();
         if (!res.ok) throw new Error(data.message);
-        alert(data.message);
+
+        alert(`Welcome back, ${data.user.firstName}!`);
         loginModal.style.display = "none";
-        emailInput.value = "";
-        passwordInput.value = "";
+
+
+        // ✅ Save logged-in user to localStorage
+        localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+        updateProfileUI();
       })
       .catch((err) => {
         alert(err.message || "Login failed.");
@@ -167,51 +162,43 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ========== Modal Toggling ==========
+// ========== Modal Switching ==========
 document.addEventListener("DOMContentLoaded", () => {
   const registerModal = document.getElementById("registerModal");
   const registerPassModal = document.getElementById("registerPassModal");
   const loginModal = document.getElementById("loginModal");
   const showLoginLink = document.getElementById("showLogin");
   const showRegisterLink = document.getElementById("showRegister");
-  const closeLogin = document.getElementById("closeLogin");
-  const closeRegisterPass = document.getElementById("closeRegisterPass");
-  if (showLoginLink) {
-    showLoginLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      registerModal.style.display = "none";
-      registerPassModal.style.display = "none";
-      loginModal.style.display = "flex";
-    });
-  }
 
-  if (showRegisterLink) {
-    showRegisterLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      loginModal.style.display = "none";
-      registerModal.style.display = "flex";
-    });
-  }
+  showLoginLink?.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerModal.style.display = "none";
+    registerPassModal.style.display = "none";
+    loginModal.style.display = "flex";
+  });
 
-  if (closeLogin) closeLogin.addEventListener("click", () => loginModal.style.display = "none");
-  if (closeRegisterPass) closeRegisterPass.addEventListener("click", () => registerPassModal.style.display = "none");
-
-  window.addEventListener("click", (e) => {
-    if (e.target === loginModal) loginModal.style.display = "none";
-    if (e.target === registerPassModal) registerPassModal.style.display = "none";
+  showRegisterLink?.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginModal.style.display = "none";
+    registerModal.style.display = "flex";
   });
 });
 
-// ========== Profile Modal Toggling (if logged in) ==========
-
+// ========== Profile Modal Logic ==========
 document.addEventListener("DOMContentLoaded", () => {
   const profileModal = document.getElementById("profileModal");
-  const openProfileBtn = document.getElementById("openProfile");
+  const profileIcon = document.querySelector('a[aria-label="User"]');
   const closeProfileBtn = document.getElementById("closeProfile");
 
-  openProfileBtn?.addEventListener("click", (e) => {
+  profileIcon?.addEventListener("click", (e) => {
     e.preventDefault();
-    profileModal.classList.add("show");
+    const userData = localStorage.getItem("loggedInUser");
+    if (userData) {
+      profileModal.classList.add("show");
+      updateProfileUI();
+    } else {
+      document.getElementById("registerModal").style.display = "flex";
+    }
   });
 
   closeProfileBtn?.addEventListener("click", () => {
@@ -219,18 +206,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", (e) => {
-    const isClickInside = profileModal.contains(e.target);
-    const isModalVisible = profileModal.classList.contains("show");
-
-    if (isModalVisible && !e.target.closest(".profile-content") && !e.target.closest("#openProfile")) {
+    if (!e.target.closest("#profileModal") && !e.target.closest('a[aria-label="User"]')) {
       profileModal.classList.remove("show");
     }
   });
 });
 
+function updateProfileUI() {
+  const userData = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+  const profileName = document.querySelector("#profileModal h3");
 
+  if (profileName && userData.firstName) {
+    profileName.textContent = `Hi ${userData.firstName}`;
+  }
+}
 
-// ========== PRODUCT CLICK REDIRECT ==========
+// ========== Product Card Click ==========
 document.addEventListener("DOMContentLoaded", function () {
   const productCards = document.querySelectorAll(".product-card");
 
@@ -242,3 +233,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ========== LOGOUT ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  logoutBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    localStorage.removeItem("loggedInUser"); // 💣 remove login data
+    document.getElementById("profileModal").classList.remove("show"); // hide modal
+    window.location.reload(); // 🔄 reload page to reset UI
+  });
+});

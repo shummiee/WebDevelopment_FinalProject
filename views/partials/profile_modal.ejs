@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Modal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="profile-modal" id="profileModal">
-        <div class="profile-content">
-        <h3>Hi Lorem Ipsum</h3>
-        <a href="#">Visit your profile <span>&rarr;</span></a>
-        <button class="side-nav-box">
-            <div>
-            <h4>Liked Products</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <span class="arrow">&rarr;</span>
-        </button>
+  <div class="profile-modal" id="profileModal">
+    <div class="profile-content">
+        <h3 id="profile-name">Hi Thrifter</h3>
 
-        <button class="side-nav-box">
-            <div>
-            <h4>Order Tracker</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <span class="arrow">&rarr;</span>
-        </button>
+      <a href="/profile">Visit your profile <span>&rarr;</span></a>
 
-        <button class="side-nav-box">
-            <div>
-            <h4>Purchased History</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <span class="arrow">&rarr;</span>
-        </button>
-
-        <a href="/profile" class="side-nav-box">
-            <div>
-            <h4>Account Settings</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
-            <span class="arrow">&rarr;</span>
-        </a>
-        <a href="#" class="logout-link">Logout</a>
+      <button class="side-nav-box">
+        <div>
+          <h4>Liked Products</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <button class="side-nav-box">
+        <div>
+          <h4>Order Tracker</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <button class="side-nav-box">
+        <div>
+          <h4>Purchased History</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </button>
+
+      <a href="/profile" class="side-nav-box">
+        <div>
+          <h4>Account Settings</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <span class="arrow">&rarr;</span>
+      </a>
+
+      <a href="#" id="logoutBtn" class="logout-link">Logout</a>
     </div>
-    <script src="/js/main_js.js" defer></script>
+  </div>
+
+  <script src="/js/main_js.js" defer></script>
 </body>
+</html>
