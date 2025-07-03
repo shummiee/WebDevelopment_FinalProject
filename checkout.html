@@ -54,9 +54,29 @@
         </div>
 
         <div class="checkout-payment">
-            <div>
-                
-            </div>
+            <h3>Payment Method:</h3>
+            <label for="standard">Cash on Delivery
+                <input type="radio" id="overnight" name="payment" value="overnight" checked>
+            </label>
+
+            <label for="express">G-cash
+                <input type="radio" id="overnight" name="payment" value="overnight">
+            </label>
+
+            <label for="overnight">Credit/Debit Card 
+                <input type="radio" id="overnight" name="payment" value="overnight"></label>
+        </div>
+
+        <div class="checkout-payment-details">
+            <h3>Payment Details</h3>
+            <p>Merchandise Subtotal <span>₱subtotal</span></p>
+            <p>Shipping Subtotal <span>₱sf</span></p>
+            <p><strong>Total Payment</strong><span>₱total</span></p>
+        </div>
+
+        <div class="place-order">
+            <p>Total <span class="total">₱total</span> 
+                <button class="place-order-btn">Place Order</button></p>
         </div>
     </form>
 </body>
