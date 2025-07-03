@@ -1,21 +1,38 @@
 // backend/server.js
 const express = require('express');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const open = require('open').default;
 const path = require('path');
 const userRoutes = require('./routes/user');
+
 const productRoutes = require('./routes/products');
 
 require('dotenv').config();
 console.log('__dirname:', __dirname);
 console.log('MONGO_URI:', process.env.MONGO_URI);
 
+const adminRoutes = require('./routes/admin');
+
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+
 const app = express();
 app.use(cors());
+app.use(session({
+  secret: 'supersecretkey', // change this to something secure
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // use true only if using HTTPS
+}));
+
 app.use(express.json());
 app.use('/api/users', userRoutes);
+
 app.use('/products', productRoutes);
+
+app.use('/admin', adminRoutes);
+
 
 // Serve your CSS/JS/IMG etc from the project root
 app.use(express.static(path.join(__dirname, '..')));
@@ -52,11 +69,14 @@ app.get('/cart', (req, res) => {
 });
 
 // backend/server.js
-app.get('/main', async (req, res) => {
-  // Example logic to pass user (you need session/token normally)
-  const loggedInUser = req.query.user || null; // just for example
-  res.render('main', { user: loggedInUser });
+app.get('/main', (req, res) => {
+  const user = {
+    firstName: req.session.username || null,
+    isAdmin: req.session.isAdmin || false
+  };
+  res.render('main', { user });
 });
+
 
 
 // Start server

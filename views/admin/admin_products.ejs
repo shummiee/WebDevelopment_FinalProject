@@ -12,7 +12,8 @@
     <script src="/js/admin.js" defer></script>
 </head>
 <body>
-    <%- include('/admin_header') %>
+    <%- include('./admin_header') %>
+
 
     <!-- ========== PRODUCTS SECTION ========== -->
     <section class="add-product-section" id="addProductSection">
@@ -24,7 +25,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -41,7 +42,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -58,7 +59,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -75,7 +76,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -92,7 +93,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -112,7 +113,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -129,7 +130,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -146,7 +147,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -163,7 +164,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -180,7 +181,7 @@
                 <div class="products-grid">
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="img/product1.jpg" alt="Product 1">
+                            <img src="/img/product1.jpg" alt="Product 1">
                         </div>
                         <div class="product-info">
                             <span class="price">₱600</span>
@@ -221,7 +222,7 @@
         </div>
     </div>
 
-     <!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION START -->
+  <!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION START -->
   <section class="products-admin">
     <h2>All Products (Database)</h2>
     <div class="products-grid">
@@ -251,6 +252,6 @@
   </section>
   <!-- ✅ ✅ ✅ NEW: DYNAMIC PRODUCTS CRUD SECTION END -->
 
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>
 </body>
 </html>
