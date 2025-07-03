@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
+
+
 // 🧪 Test route
 router.get('/', async (req, res) => {
   try {
@@ -74,11 +76,20 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
+    // ✅ Set session BEFORE responding
+    req.session.userId = user._id;
+    req.session.username = user.firstName;
+    req.session.isAdmin = user.isAdmin;
+
+    
+
     res.status(200).json({ 
       message: `Welcome back, ${user.firstName}!`, 
       user: {
+        _id: user._id,
         firstName: user.firstName,
-        email: user.email
+        email: user.email,
+        isAdmin: user.isAdmin || false
       }
     });
 
@@ -87,6 +98,8 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Login failed due to server error' });
   }
 });
+
+
 
 
 module.exports = router;

@@ -1,12 +1,31 @@
-// ========== FADE IMAGE SLIDESHOW ==========
-const images = document.querySelectorAll('.fade-image');
-let current = 0;
+// ========== REDIRECT ADMIN IF ALREADY LOGGED IN ==========
+window.addEventListener("DOMContentLoaded", () => {
+  const userData = JSON.parse(localStorage.getItem("loggedInUser") || "{}");
+  const currentPath = window.location.pathname;
 
+  if (userData && userData.isAdmin && currentPath !== "/admin/products") {
+    window.location.href = "/admin/products";
+  }
+});
+
+// ========== SHOW LOGIN MODAL ONLY IF NOT LOGGED IN ==========
+window.addEventListener("DOMContentLoaded", () => {
+  const user = localStorage.getItem("loggedInUser");
+  const loginModal = document.getElementById("loginModal");
+  if (!user && loginModal) {
+    loginModal.style.display = "flex";
+  }
+});
+
+// ========== FADE IMAGE SLIDESHOW ==========
+const fadeImages = document.querySelectorAll('.fade-image');
+let current = 0;
 setInterval(() => {
-  images[current].classList.remove('active');
-  current = (current + 1) % images.length;
-  images[current].classList.add('active');
+  fadeImages[current].classList.remove('active');
+  current = (current + 1) % fadeImages.length;
+  fadeImages[current].classList.add('active');
 }, 1000);
+
 
 // ========== MODAL: Register Step 1 ==========
 document.addEventListener("DOMContentLoaded", () => {
@@ -130,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginModal = document.getElementById("loginModal");
 
-  loginBtn?.addEventListener("click", () => {
+  loginBtn?.addEventListener("click", async () => {
     const email = document.getElementById("email-login").value.trim();
     const password = document.getElementById("password-login").value.trim();
 
@@ -139,28 +158,40 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    fetch("http://localhost:3000/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    })
-      .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.message);
+    console.log("🔐 Attempting login with:", email);
 
-        alert(`Welcome back, ${data.user.firstName}!`);
-        loginModal.style.display = "none";
-
-
-        // ✅ Save logged-in user to localStorage
-        localStorage.setItem("loggedInUser", JSON.stringify(data.user));
-        updateProfileUI();
-      })
-      .catch((err) => {
-        alert(err.message || "Login failed.");
+    try {
+      const res = await fetch("http://localhost:3000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
+
+      const data = await res.json();
+      console.log("📦 Server Response:", data);
+
+      if (!res.ok) throw new Error(data.message);
+
+      localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+
+      if (data.user.isAdmin === true) {
+        console.log("✅ Admin detected, redirecting...");
+        window.location.href = "/admin/products";
+        return;
+      }
+
+      alert(`Welcome back, ${data.user.firstName}!`);
+      loginModal.style.display = "none";
+      updateProfileUI();
+
+
+    } catch (err) {
+      console.error("🔥 Login Error:", err);
+      alert(err.message || "Login failed.");
+    }
   });
 });
+
 
 // ========== Modal Switching ==========
 document.addEventListener("DOMContentLoaded", () => {
@@ -239,8 +270,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   logoutBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    localStorage.removeItem("loggedInUser"); // 💣 remove login data
-    document.getElementById("profileModal").classList.remove("show"); // hide modal
-    window.location.reload(); // 🔄 reload page to reset UI
+    localStorage.removeItem("loggedInUser");
+    document.getElementById("profileModal").classList.remove("show");
+    window.location.reload();
   });
 });
