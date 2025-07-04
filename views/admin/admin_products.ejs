@@ -22,36 +22,36 @@
         <h1><strong>bad thrifts.</strong></h1>
 
         <form action="/admin/products" method="POST" enctype="application/x-www-form-urlencoded">
-          <label>Product Name: <input type="text" name="Name" required /></label>
-          <label>Brand: <input type="text" name="Brand" required /></label>
-          <label>Product Description: <input type="text" name="Description" /></label>
-          <label>Price: <input type="number" name="Price" required /></label>
-          <label>Size: <input type="text" name="Size" required /></label>
+            <label>Product Name: <input type="text" name="Name" required /></label>
+            <label>Brand: <input type="text" name="Brand" required /></label>
+            <label>Product Description: <input type="text" name="Description" /></label>
+            <label>Price: <input type="number" name="Price" required /></label>
+            <label>Size: <input type="text" name="Size" required /></label>
 
-          <label>Gender:
-            <select name="Gender" required>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-            </select>
-          </label>
+            <!-- ✅ Correct Category field (Men/Women) -->
+            <label>Category:
+                <select name="Category" required>
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+                </select>
+            </label>
 
-          <label>Category: <input type="text" name="Category" required /></label>
+            <!-- ✅ Checkbox Clothing selection -->
+            <label>Clothing: <br>
+                <input type="checkbox" name="Clothing" value="New Arrival"> New Arrival <br>
+                <input type="checkbox" name="Clothing" value="Tops"> Tops <br>
+                <input type="checkbox" name="Clothing" value="Pants"> Pants <br>
+                <input type="checkbox" name="Clothing" value="Shorts"> Shorts <br>
+                <input type="checkbox" name="Clothing" value="Hoodies"> Hoodies <br>
+            </label>
 
-          <label>Clothing: <br>
-            <input type="radio" name="Clothing" value="New Arrival" required> New Arrival <br>
-            <input type="radio" name="Clothing" value="Tops"> Tops <br>
-            <input type="radio" name="Clothing" value="Pants"> Pants <br>
-            <input type="radio" name="Clothing" value="Shorts"> Shorts <br>
-            <input type="radio" name="Clothing" value="Hoodies"> Hoodies <br>
-          </label>
+            <label>Stock: <input type="number" name="Stock_Quantity" value="1" required></label>
 
-          <label>Stock: <input type="number" name="Stock_Quantity" value="1" required /></label>
+            <input type="file" id="imageInput" name="image" accept="image/*"/>
 
-          <!-- ✅ UI Image input (not processed yet) -->
-          <input type="file" id="imageInput" name="image" accept="image/*" />
-
-          <button type="submit" class="add-product-btn">Add Product</button>
+            <button type="submit" class="add-product-btn">Add Product</button>
         </form>
+
       </div>
     </div>
   </section>
