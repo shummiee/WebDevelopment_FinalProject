@@ -6,6 +6,8 @@ const cors = require('cors');
 const open = require('open').default;
 const path = require('path');
 const userRoutes = require('./routes/user');
+const methodOverride = require('method-override');
+
 
 const productRoutes = require('./routes/products');
 
@@ -28,6 +30,8 @@ app.use(session({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
 
 app.use('/api/users', userRoutes);
 
