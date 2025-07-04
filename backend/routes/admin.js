@@ -12,4 +12,23 @@ router.get('/products', async (req, res) => {
   }
 });
 
+// Add product route
+router.post('/products', async (req, res) => {
+  try {
+    console.log("🟢 FORM DATA RECEIVED:", req.body);
+    const newProduct = new Product(req.body);
+    await newProduct.save();
+    console.log("✅ Saved to MongoDB!");
+    res.redirect('/admin/products');
+  } catch (err) {
+    console.error("❌ Error saving product:", err);
+    res.status(400).send('Error adding product');
+  }
+});
+
+
+
+
+
+
 module.exports = router;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Product</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Edit Product</h1>
+  <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+    <label>Product Name:
+      <input type="text" name="Category" value="<%= product.Category %>" required>
+    </label>
+    <label>Brand:
+      <input type="text" name="Brand" value="<%= product.Brand %>" required>
+    </label>
+    <label>Description:
+      <input type="text" name="Description" value="<%= product.Description || '' %>">
+    </label>
+    <label>Price:
+      <input type="number" name="Price" value="<%= product.Price %>" required>
+    </label>
+    <label>Size:
+      <input type="text" name="Size" value="<%= product.Size %>" required>
+    </label>
+    <label>Gender:
+      <select name="Gender" required>
+        <option value="Men" <%= product.Gender === 'Men' ? 'selected' : '' %>>Men</option>
+        <option value="Women" <%= product.Gender === 'Women' ? 'selected' : '' %>>Women</option>
+      </select>
+    </label>
+    <label>Clothing Type:
+      <select name="Clothing" required>
+        <option value="New Arrival" <%= product.Clothing === 'New Arrival' ? 'selected' : '' %>>New Arrival</option>
+        <option value="Tops" <%= product.Clothing === 'Tops' ? 'selected' : '' %>>Tops</option>
+        <option value="Pants" <%= product.Clothing === 'Pants' ? 'selected' : '' %>>Pants</option>
+        <option value="Shorts" <%= product.Clothing === 'Shorts' ? 'selected' : '' %>>Shorts</option>
+        <option value="Hoodies" <%= product.Clothing === 'Hoodies' ? 'selected' : '' %>>Hoodies</option>
+      </select>
+    </label>
+    <label>Stock Quantity:
+      <input type="number" name="Stock_Quantity" value="<%= product.Stock_Quantity %>" required>
+    </label>
+    <br><br>
+    <button type="submit">Update Product</button>
+  </form>
+</body>
+</html>

@@ -9,8 +9,10 @@ const ProductSchema = new mongoose.Schema({
   Brand: String,
   Price: Number,
   Stock_Quantity: Number,
+  Description: String // optional
+
 
   
 });
 
-module.exports = mongoose.model('Product', ProductSchema, 'test');
+module.exports = mongoose.model('product', ProductSchema, 'CRUD Products ( Admin )');

@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
-    res.render('edit_product', { product });
+    res.render('admin/admin_editProduct', { product }); // ✅ Corrected path
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error: Unable to fetch product');
