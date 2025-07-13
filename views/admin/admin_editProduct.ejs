@@ -7,9 +7,10 @@
 </head>
 <body>
   <h1>Edit Product</h1>
-  <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+  
+  <form action="/admin/products/<%= product._id %>?_method=PUT" method="POST">
     <label>Product Name:
-      <input type="text" name="Category" value="<%= product.Category %>" required>
+      <input type="text" name="Name" value="<%= product.Name %>" required>
     </label>
     <label>Brand:
       <input type="text" name="Brand" value="<%= product.Brand %>" required>
@@ -23,26 +24,34 @@
     <label>Size:
       <input type="text" name="Size" value="<%= product.Size %>" required>
     </label>
+    <label>Category:
+      <select name="Category">
+        <option value="Men" <%= product.Category === 'Men' ? 'selected' : '' %>>Men</option>
+        <option value="Women" <%= product.Category === 'Women' ? 'selected' : '' %>>Women</option>
+      </select>
+    </label>
     <label>Gender:
-      <select name="Gender" required>
+      <select name="Gender">
         <option value="Men" <%= product.Gender === 'Men' ? 'selected' : '' %>>Men</option>
         <option value="Women" <%= product.Gender === 'Women' ? 'selected' : '' %>>Women</option>
       </select>
     </label>
-    <label>Clothing Type:
-      <select name="Clothing" required>
-        <option value="New Arrival" <%= product.Clothing === 'New Arrival' ? 'selected' : '' %>>New Arrival</option>
-        <option value="Tops" <%= product.Clothing === 'Tops' ? 'selected' : '' %>>Tops</option>
-        <option value="Pants" <%= product.Clothing === 'Pants' ? 'selected' : '' %>>Pants</option>
-        <option value="Shorts" <%= product.Clothing === 'Shorts' ? 'selected' : '' %>>Shorts</option>
-        <option value="Hoodies" <%= product.Clothing === 'Hoodies' ? 'selected' : '' %>>Hoodies</option>
-      </select>
+    <label>Clothing:
+      <% const clothing = product.Clothing || []; %>
+      <br>
+      <input type="checkbox" name="Clothing" value="New Arrival" <%= clothing.includes('New Arrival') ? 'checked' : '' %>> New Arrival<br>
+      <input type="checkbox" name="Clothing" value="Tops" <%= clothing.includes('Tops') ? 'checked' : '' %>> Tops<br>
+      <input type="checkbox" name="Clothing" value="Pants" <%= clothing.includes('Pants') ? 'checked' : '' %>> Pants<br>
+      <input type="checkbox" name="Clothing" value="Shorts" <%= clothing.includes('Shorts') ? 'checked' : '' %>> Shorts<br>
+      <input type="checkbox" name="Clothing" value="Hoodies" <%= clothing.includes('Hoodies') ? 'checked' : '' %>> Hoodies<br>
     </label>
-    <label>Stock Quantity:
+    <label>Stock:
       <input type="number" name="Stock_Quantity" value="<%= product.Stock_Quantity %>" required>
     </label>
     <br><br>
     <button type="submit">Update Product</button>
   </form>
+
+
 </body>
 </html>
